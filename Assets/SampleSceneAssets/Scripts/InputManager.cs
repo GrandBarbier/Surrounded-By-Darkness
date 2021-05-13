@@ -21,7 +21,6 @@ public class InputManager : MonoBehaviour
         GetButtonText(interactionButton.gameObject).text = interaction.ToString();
     }
 
-
     void Update()
     {
         if (Input.GetKey(interaction))

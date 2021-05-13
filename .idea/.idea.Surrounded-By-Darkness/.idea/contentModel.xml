@@ -44,9 +44,12 @@
       <e p="Assets" t="Include">
         <e p="SampleSceneAssets" t="Include">
           <e p="Scripts" t="Include">
+            <e p="Gears.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
+            <e p="LanguageSystem.cs" t="Include" />
             <e p="LookWithMouse.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="SetTextLanguage.cs" t="Include" />
             <e p="SimpleCameraController.cs" t="Include" />
           </e>
           <e p="TutorialInfo" t="Include">
