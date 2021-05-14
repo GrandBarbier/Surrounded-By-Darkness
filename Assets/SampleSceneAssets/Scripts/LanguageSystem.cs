@@ -47,7 +47,7 @@ public static class LanguageSystem
           
           for (int i = 0; i < nbrOfWord; i++)
           {
-              Debug.Log(data[languageId + 4 * i + 4]); //1 = french 2 = english, 4 * i (4 = length of the board, add 4 to get to the value below), + 4 = start at the scnd column
+              //Debug.Log(data[languageId + 4 * i + 4]); //1 = french 2 = english, 4 * i (4 = length of the board, add 4 to get to the value below), + 4 = start at the scnd column
               outputData[i] = data[languageId + 4 * i + 4];
           }
           

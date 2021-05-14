@@ -6,26 +6,46 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public KeyCode interaction;
-    
     public GameObject menuPanel;
 
-    public Button interactionButton;
+    public KeyCode[] interactions = new KeyCode[2];
 
-    public KeyCode currentKeyCode;
+    public Button[] interactionButtons = new Button[2];
+
+    private KeyCode currentKeyCode;
+
+    private bool menu;
     
     void Start()
     {
-        interaction = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey", "E"));
+        interactions[0] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey", "E"));
 
-        GetButtonText(interactionButton.gameObject).text = interaction.ToString();
+        interactions[1] = KeyCode.None;
+        
+
+        for (int i = 0; i < interactionButtons.Length; i++)
+        {
+            int index = i; //fix : Access to Modified Closure
+            GetButtonText(interactionButtons[i].gameObject).text = interactions[i].ToString();
+            interactionButtons[i].onClick.AddListener(() => GetButtonText(interactionButtons[index].gameObject).SetText("..."));
+            interactionButtons[i].onClick.AddListener(() => StartCoroutine(WaitForKey("InteractionKey_00", index)));
+        }
     }
 
     void Update()
     {
-        if (Input.GetKey(interaction))
+        foreach (var interaction in interactions)
         {
-            Debug.Log("Interaction");
+            if (Input.GetKey(interaction))
+            {
+                Debug.Log("Interaction_01");
+                break;
+            }
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            Menu();
         }
     }
 
@@ -35,28 +55,47 @@ public class InputManager : MonoBehaviour
         {
             currentKeyCode = Event.current.keyCode;
         }
+        else
+        {
+            currentKeyCode = KeyCode.None;
+        }
+    }
+    
+    public void Menu()
+    {
+        if (menu)
+        {
+            menuPanel.SetActive(false);
+        }
+        else
+        {
+            menuPanel.SetActive(true);
+        }
+
+        menu = !menu;
     }
 
-    public IEnumerator WaitForKey(string keyName)
+    #region ButtonFunc
+
+    public IEnumerator WaitForKey(string keyName, int id = 0)
     {
-        Debug.Log("Waiting for a key");
-        //yield return Event.current;
+        //Debug.Log("Waiting for a key");
         yield return new WaitUntil(() => currentKeyCode != KeyCode.None);
-        Debug.Log("Event happened");
+        //Debug.Log("Key received");
         
         switch (keyName)
         {
-            case "InteractionKey" :
-                interaction = currentKeyCode;
-                GetButtonText(interactionButton.gameObject).text = interaction.ToString();
+            case "InteractionKey_00" :
+                interactions[id] = currentKeyCode;
+                GetButtonText(interactionButtons[id].gameObject).text = interactions[id].ToString();
                 break;
         }
     }
 
-    public void StartWaitForKey(string keyName)
+    /*public void StartWaitForKey(string keyName)
     {
         StartCoroutine(WaitForKey(keyName));
-    }
+    }*/
 
     public TextMeshProUGUI GetButtonText(GameObject button)
     {
@@ -72,4 +111,6 @@ public class InputManager : MonoBehaviour
             return null;
         }
     }
+
+    #endregion
 }
