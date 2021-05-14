@@ -18,9 +18,9 @@ public class InputManager : MonoBehaviour
     
     void Start()
     {
-        interactions[0] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey", "E"));
+        interactions[0] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey_00", "E"));
 
-        interactions[1] = KeyCode.None;
+        interactions[1] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey_01", "None"));
         
 
         for (int i = 0; i < interactionButtons.Length; i++)
@@ -88,6 +88,7 @@ public class InputManager : MonoBehaviour
             case "InteractionKey_00" :
                 interactions[id] = currentKeyCode;
                 GetButtonText(interactionButtons[id].gameObject).text = interactions[id].ToString();
+                PlayerPrefs.SetString("InteractionKey_0" + id, interactions[id].ToString());
                 break;
         }
     }
