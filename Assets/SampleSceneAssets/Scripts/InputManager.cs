@@ -7,6 +7,8 @@ using UnityEngine.UI;
 public class InputManager : MonoBehaviour
 {
     public GameObject menuPanel;
+    
+    private bool menu;
 
     public KeyCode[] interactions = new KeyCode[2];
 
@@ -14,8 +16,6 @@ public class InputManager : MonoBehaviour
 
     private KeyCode currentKeyCode;
 
-    private bool menu;
-    
     void Start()
     {
         interactions[0] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey_00", "E"));
@@ -41,11 +41,6 @@ public class InputManager : MonoBehaviour
                 Debug.Log("Interaction_01");
                 break;
             }
-        }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-            Menu();
         }
     }
 
