@@ -6,26 +6,54 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public static KeyCode[] interactions = new KeyCode[2];
+    public enum Keys {Interaction, Forward, Left, BackWard, Right }
+    
+    public static KeyCode[] interactionKeys = new KeyCode[2];
 
-    public Button[] interactionButtons = new Button[2];
+    public GameObject interaction;
+    private Button[] interactionButtons;
+    
+    public static KeyCode[] forwardKeys = new KeyCode[2];
+
+    public GameObject forward;
+    private Button[] forwardButtons;
+    
+    public static KeyCode[] LeftKeys = new KeyCode[2];
+
+    public GameObject left;
+    private Button[] leftButtons;
+
+    public static KeyCode[] backWardKeys = new KeyCode[2];
+
+    public GameObject backWard;
+    private Button[] backWardButtons;
+
+    public static KeyCode[] rightKeys = new KeyCode[2];
+
+    public GameObject right;
+    private Button[] rightButtons;
 
     private KeyCode currentKeyCode;
 
     public void Start()
     {
-        interactions[0] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey_00", "E"));
+        interactionButtons = interaction.GetComponentsInChildren<Button>();
+        forwardButtons = forward.GetComponentsInChildren<Button>();
+        leftButtons = left.GetComponentsInChildren<Button>();
+        backWardButtons = backWard.GetComponentsInChildren<Button>();
+        rightButtons = right.GetComponentsInChildren<Button>();
 
-        interactions[1] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey_01", "None"));
-        
+        SetUpKeys(interactionKeys, "InteractionKey_0", new List<string>{"E", "None"});
+        SetUpKeys(forwardKeys, "Forward_0", new List<string>{"Z", "None"});
+        SetUpKeys(LeftKeys, "Left_0", new List<string>{"Q", "None"});
+        SetUpKeys(backWardKeys, "BackWard_0", new List<string>{"S", "None"});
+        SetUpKeys(rightKeys, "Right_0", new List<string>{"D", "None"});
 
-        for (int i = 0; i < interactionButtons.Length; i++)
-        {
-            int index = i; //fix : Access to Modified Closure
-            GetButtonText(interactionButtons[i].gameObject).text = interactions[i].ToString();
-            interactionButtons[i].onClick.AddListener(() => GetButtonText(interactionButtons[index].gameObject).SetText("..."));
-            interactionButtons[i].onClick.AddListener(() => StartCoroutine(WaitForKey("InteractionKey_00", index)));
-        }
+        SetUpButtonArray(interactionButtons, interactionKeys, Keys.Interaction);
+        SetUpButtonArray(forwardButtons, forwardKeys, Keys.Interaction);
+        SetUpButtonArray(leftButtons, LeftKeys, Keys.Left);
+        SetUpButtonArray(backWardButtons, backWardKeys, Keys.BackWard);
+        SetUpButtonArray(rightButtons, rightKeys, Keys.Right);
     }
 
     void Update()
@@ -54,7 +82,26 @@ public class InputManager : MonoBehaviour
 
     #region ButtonFunc
 
-    public IEnumerator WaitForKey(string keyName, int id = 0)
+    public void SetUpKeys(KeyCode[] keys, string keyName, List<string> defaultValue)
+    {
+        for (int i = 0; i < keys.Length; i++)
+        {
+            keys[i] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString(keyName + i, defaultValue[i]));
+        }
+    }
+
+    public void SetUpButtonArray(Button[] buttons, KeyCode[] keys, Keys keyName)
+    {
+        for (int i = 0; i < buttons.Length; i++)
+        {
+            int index = i; //fix : Access to Modified Closure
+            GetButtonText(buttons[i].gameObject).text = keys[i].ToString();
+            buttons[i].onClick.AddListener(() => GetButtonText(buttons[index].gameObject).SetText("..."));
+            buttons[i].onClick.AddListener(() => StartCoroutine(WaitForKey(keyName, index)));
+        }
+    }
+
+    public IEnumerator WaitForKey(Keys keyName, int id = 0)
     {
         //Debug.Log("Waiting for a key");
         yield return new WaitUntil(() => currentKeyCode != KeyCode.None);
@@ -62,15 +109,35 @@ public class InputManager : MonoBehaviour
         
         switch (keyName)
         {
-            case "InteractionKey_00" :
-                interactions[id] = currentKeyCode;
-                GetButtonText(interactionButtons[id].gameObject).text = interactions[id].ToString();
-                PlayerPrefs.SetString("InteractionKey_0" + id, interactions[id].ToString());
+            case Keys.Interaction :
+                interactionKeys[id] = currentKeyCode;
+                GetButtonText(interactionButtons[id].gameObject).text = interactionKeys[id].ToString();
+                PlayerPrefs.SetString("InteractionKey_0" + id, interactionKeys[id].ToString());
+                break;
+            case Keys.Forward :
+                forwardKeys[id] = currentKeyCode;
+                GetButtonText(forwardButtons[id].gameObject).text = forwardKeys[id].ToString();
+                PlayerPrefs.SetString("Forward_0" + id, forwardKeys[id].ToString());
+                break;
+            case Keys.Left :
+                LeftKeys[id] = currentKeyCode;
+                GetButtonText(leftButtons[id].gameObject).text = LeftKeys[id].ToString();
+                PlayerPrefs.SetString("Left_0" + id, LeftKeys[id].ToString());
+                break;
+            case Keys.BackWard :
+                backWardKeys[id] = currentKeyCode;
+                GetButtonText(backWardButtons[id].gameObject).text = backWardKeys[id].ToString();
+                PlayerPrefs.SetString("Backward_0" + id, backWardKeys[id].ToString());
+                break;
+            case Keys.Right :
+                rightKeys[id] = currentKeyCode;
+                GetButtonText(rightButtons[id].gameObject).text = rightKeys[id].ToString();
+                PlayerPrefs.SetString("Right_0" + id, rightKeys[id].ToString());
                 break;
         }
     }
 
-    public TextMeshProUGUI GetButtonText(GameObject button)
+    public static TextMeshProUGUI GetButtonText(GameObject button)
     {
         Transform child = button.transform.GetChild(0);
 

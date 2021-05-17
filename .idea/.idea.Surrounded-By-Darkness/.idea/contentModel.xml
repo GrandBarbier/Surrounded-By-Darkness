@@ -50,6 +50,7 @@
             <e p="LookWithMouse.cs" t="Include" />
             <e p="MenuManager.cs" t="Include" />
             <e p="PlayerMovement.cs" t="Include" />
+            <e p="SelectionUI.cs" t="Include" />
             <e p="SetTextLanguage.cs" t="Include" />
             <e p="SimpleCameraController.cs" t="Include" />
           </e>

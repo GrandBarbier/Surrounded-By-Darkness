@@ -20,8 +20,8 @@ public static class LanguageSystem
           textAssetData = Resources.Load<TextAsset>("LanguageBoard");
           
           data = textAssetData.text.Split(new [] {";", "\n"}, StringSplitOptions.None);
-          
-          SetLanguage(Languages.English);
+
+          SetLanguage((Languages)Enum.Parse(typeof(Languages), PlayerPrefs.GetString("LanguagePref", "English")));
       }
   
       public static void SetLanguage(Languages language)
@@ -41,7 +41,7 @@ public static class LanguageSystem
                   break;
           }
 
-          int nbrOfWord = 3;
+          int nbrOfWord = 4;
           
           outputData = new string[nbrOfWord];
           
@@ -50,6 +50,8 @@ public static class LanguageSystem
               //Debug.Log(data[languageId + 4 * i + 4]); //1 = french 2 = english, 4 * i (4 = length of the board, add 4 to get to the value below), + 4 = start at the scnd column
               outputData[i] = data[languageId + 4 * i + 4];
           }
+          
+          PlayerPrefs.SetString("LanguagePref", language.ToString());
           
           setLanguageEvent?.Invoke();
       }

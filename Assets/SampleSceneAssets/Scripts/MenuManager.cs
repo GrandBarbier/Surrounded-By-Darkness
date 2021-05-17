@@ -7,17 +7,30 @@ using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
 {
+    public PanelMap[] PanelMaps;
+    public GameObject selection;
+
+    [NonSerialized] public PanelMap currentMap;
+    
+    [Header("Panels")]
     public GameObject menuPanel;
     private bool menu;
-    
+
     public GameObject parametersPanel;
     public GameObject inputsPanel;
     public GameObject savePanel;
+    public GameObject languagePanel;
 
+    [Header("Buttons")]
     public Button resumeButton;
     public Button parameterButton;
-    public Button inputsButton;
     public Button saveButton;
+    public Button inputsButton;
+    public Button languagesButton;
+
+    [Header("Language Buttons")]
+    public Button englishButton;
+    public Button frenchButton;
     
     public Button backButton;
 
@@ -25,19 +38,35 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        allPanels = new List<GameObject>{parametersPanel, menuPanel, inputsPanel, savePanel};
+        allPanels = new List<GameObject>{parametersPanel, menuPanel, inputsPanel, savePanel, languagePanel};
 
-        resumeButton.onClick.AddListener(Menu);
+        PanelMaps = new[] {new PanelMap("PauseMap", 
+            new RectTransform[, ] {{resumeButton.GetComponent<RectTransform>(), parameterButton.GetComponent<RectTransform>(), saveButton.GetComponent<RectTransform>()}}, 
+            new Vector2Int(0, 0)),  };
+
+        resumeButton?.onClick.AddListener(Menu);
         
         //Go to parameter panel when you click parameter button
-        parameterButton.onClick.AddListener(() => GoToPanel1(parametersPanel, parameterButton.transform.parent.gameObject));
+        parameterButton?.onClick.AddListener(() => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
+            () => backButton.gameObject.SetActive(false)));
         
         //Go to save panel when you click save button
-        saveButton.onClick.AddListener(() => GoToPanel1(savePanel, saveButton.transform.parent.gameObject));
+        saveButton?.onClick.AddListener(() => GoToPanel(savePanel, saveButton.transform.parent.gameObject, 
+            () => backButton.gameObject.SetActive(false)));
         
-        //inputsButton.onClick.AddListener(GoToInputsPanel);
-        inputsButton.onClick.AddListener(() => GoToPanel1(inputsPanel, inputsButton.transform.parent.gameObject, true, 
-            () => GoToPanel1(parametersPanel, parameterButton.transform.parent.gameObject)));
+        //Go to Inputs panel when you click inputs button and setup the back button to go back to parameter panel
+        inputsButton?.onClick.AddListener(() => GoToPanel(inputsPanel, inputsButton.transform.parent.gameObject, 
+            () => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
+                () => backButton.gameObject.SetActive(false))));
+        
+        //Go to language panel when you click language button and setup the back button to go back to parameter panel
+        languagesButton?.onClick.AddListener(() => GoToPanel(languagePanel, languagePanel.transform.parent.gameObject, 
+            () => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
+                () => backButton.gameObject.SetActive(false))));
+        
+        //Change language when you click languages buttons
+        englishButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.English));
+        frenchButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.French));
     }
     
     void Update()
@@ -47,7 +76,7 @@ public class MenuManager : MonoBehaviour
             Menu();
         }
         
-        foreach (var interaction in InputManager.interactions)
+        foreach (var interaction in InputManager.interactionKeys)
         {
             if (Input.GetKeyDown(interaction))
             {
@@ -65,25 +94,28 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            menuPanel.SetActive(true);
+            GoToPanel(menuPanel, null, null, PanelMaps[0], false);
         }
 
         menu = !menu;
     }
 
-    public void GoToPanel1(GameObject panelToGo, GameObject panelToGoBackButton, bool enableBackButton = false, UnityAction backButtonAction = null)
+    public void GoToPanel(GameObject panelToGo, GameObject panelToGoBackButton, UnityAction backButtonAction, PanelMap panelMap = null, bool enableBackButton = true)
     { 
         HideAllPanel();
         
         panelToGo.SetActive(true);
-        
+        selection.transform.SetParent(panelToGo.transform);
+
+        if (panelMap != null)
+        {
+            currentMap = panelMap;
+            selection.GetComponent<RectTransform>().position = panelMap.map[panelMap.startPos.x, panelMap.startPos.y].position;
+        }
+
         if (enableBackButton)
         {
             SetBackButton(panelToGoBackButton, panelToGo, () => backButton.onClick.AddListener(backButtonAction));
-        }
-        else
-        {
-            SetBackButton(panelToGoBackButton, panelToGo, () =>  backButton.onClick.AddListener(() => backButton.gameObject.SetActive(false)));
         }
     }
 
@@ -108,4 +140,20 @@ public class MenuManager : MonoBehaviour
         
         action?.Invoke();
     }
+}
+
+public class PanelMap
+{
+    public PanelMap(string mapName, RectTransform[,] map, Vector2Int startPos)
+    {
+        this.mapName = mapName;
+        this.map = map;
+        this.startPos = startPos;
+    }
+    
+    public string mapName;
+    
+    public RectTransform[,] map;
+
+    public Vector2Int startPos;
 }
