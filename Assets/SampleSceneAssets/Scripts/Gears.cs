@@ -6,6 +6,8 @@ public class Gears : MonoBehaviour
 {
     public static Gears gears;
 
+    public InputManager InputManager;
+
     void Awake()
     {
         if (gears == null)
@@ -13,6 +15,7 @@ public class Gears : MonoBehaviour
             gears = this;
             DontDestroyOnLoad(gameObject);
             LanguageSystem.Init();
+            InputManager.Start();
         }
         else
         {

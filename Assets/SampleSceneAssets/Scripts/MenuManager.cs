@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -11,26 +12,32 @@ public class MenuManager : MonoBehaviour
     
     public GameObject parametersPanel;
     public GameObject inputsPanel;
+    public GameObject savePanel;
 
     public Button resumeButton;
     public Button parameterButton;
     public Button inputsButton;
+    public Button saveButton;
     
     public Button backButton;
 
-    private List<GameObject> allPanels = new List<GameObject>();
+    private List<GameObject> allPanels;
 
     void Start()
     {
-        allPanels.Add(parametersPanel);
-        allPanels.Add(menuPanel);
-        allPanels.Add(inputsPanel);
-            
-        resumeButton.onClick.AddListener(Menu);
+        allPanels = new List<GameObject>{parametersPanel, menuPanel, inputsPanel, savePanel};
 
-        parameterButton.onClick.AddListener(GoToParameterPanel);
+        resumeButton.onClick.AddListener(Menu);
         
-        inputsButton.onClick.AddListener(GoToInputsPanel);
+        //Go to parameter panel when you click parameter button
+        parameterButton.onClick.AddListener(() => GoToPanel1(parametersPanel, parameterButton.transform.parent.gameObject));
+        
+        //Go to save panel when you click save button
+        saveButton.onClick.AddListener(() => GoToPanel1(savePanel, saveButton.transform.parent.gameObject));
+        
+        //inputsButton.onClick.AddListener(GoToInputsPanel);
+        inputsButton.onClick.AddListener(() => GoToPanel1(inputsPanel, inputsButton.transform.parent.gameObject, true, 
+            () => GoToPanel1(parametersPanel, parameterButton.transform.parent.gameObject)));
     }
     
     void Update()
@@ -38,6 +45,15 @@ public class MenuManager : MonoBehaviour
         if (Input.GetButtonDown("Cancel"))
         {
             Menu();
+        }
+        
+        foreach (var interaction in InputManager.interactions)
+        {
+            if (Input.GetKeyDown(interaction))
+            {
+                Debug.Log("Interaction_01");
+                break;
+            }
         }
     }
     
@@ -55,23 +71,20 @@ public class MenuManager : MonoBehaviour
         menu = !menu;
     }
 
-    public void GoToParameterPanel()
+    public void GoToPanel1(GameObject panelToGo, GameObject panelToGoBackButton, bool enableBackButton = false, UnityAction backButtonAction = null)
     { 
         HideAllPanel();
         
-        parametersPanel.SetActive(true);
+        panelToGo.SetActive(true);
         
-        SetBackButton(parameterButton.transform.parent.gameObject, parametersPanel, 
-            () =>  backButton.onClick.AddListener(() => backButton.gameObject.SetActive(false)));
-    }
-
-    public void GoToInputsPanel()
-    {
-        HideAllPanel();
-        
-        inputsPanel.SetActive(true);
-        
-        SetBackButton(inputsButton.transform.parent.gameObject, inputsPanel, () => backButton.onClick.AddListener(GoToParameterPanel));
+        if (enableBackButton)
+        {
+            SetBackButton(panelToGoBackButton, panelToGo, () => backButton.onClick.AddListener(backButtonAction));
+        }
+        else
+        {
+            SetBackButton(panelToGoBackButton, panelToGo, () =>  backButton.onClick.AddListener(() => backButton.gameObject.SetActive(false)));
+        }
     }
 
     public void HideAllPanel()

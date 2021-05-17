@@ -6,17 +6,13 @@ using UnityEngine.UI;
 
 public class InputManager : MonoBehaviour
 {
-    public GameObject menuPanel;
-    
-    private bool menu;
-
-    public KeyCode[] interactions = new KeyCode[2];
+    public static KeyCode[] interactions = new KeyCode[2];
 
     public Button[] interactionButtons = new Button[2];
 
     private KeyCode currentKeyCode;
 
-    void Start()
+    public void Start()
     {
         interactions[0] = (KeyCode) System.Enum.Parse(typeof(KeyCode), PlayerPrefs.GetString("InteractionKey_00", "E"));
 
@@ -34,14 +30,14 @@ public class InputManager : MonoBehaviour
 
     void Update()
     {
-        foreach (var interaction in interactions)
+        /*foreach (var interaction in interactions)
         {
             if (Input.GetKey(interaction))
             {
                 Debug.Log("Interaction_01");
                 break;
             }
-        }
+        }*/
     }
 
     void OnGUI()
@@ -54,20 +50,6 @@ public class InputManager : MonoBehaviour
         {
             currentKeyCode = KeyCode.None;
         }
-    }
-    
-    public void Menu()
-    {
-        if (menu)
-        {
-            menuPanel.SetActive(false);
-        }
-        else
-        {
-            menuPanel.SetActive(true);
-        }
-
-        menu = !menu;
     }
 
     #region ButtonFunc
@@ -87,11 +69,6 @@ public class InputManager : MonoBehaviour
                 break;
         }
     }
-
-    /*public void StartWaitForKey(string keyName)
-    {
-        StartCoroutine(WaitForKey(keyName));
-    }*/
 
     public TextMeshProUGUI GetButtonText(GameObject button)
     {
