@@ -16,12 +16,14 @@ public class Movement : MonoBehaviour
 
     public bool isGrounded;
     public Transform groundCheck;
-    public float groundDistance;
+    public float groundDistance = 0.4f;
     public LayerMask groundMask;
 
     float TurnSmoothVelocity;
 
-    public float gravity = 9;
+    public float gravity = -9;
+    private Vector3 velocity;
+    public float jumpHeight = 3.0f;
    
 
     // Start is called before the first frame update
@@ -35,6 +37,11 @@ public class Movement : MonoBehaviour
     {
         
         isGrounded = Physics.CheckSphere(groundCheck.position, groundDistance, groundMask);
+
+        if (isGrounded && velocity.y < 0)
+        {
+            velocity.y = -2f;
+        }
         
         
         float horizontal = Input.GetAxisRaw("Horizontal");
@@ -48,13 +55,20 @@ public class Movement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f,  angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
-
-            
-            
-            
-
-            
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
+            
         }
+
+        if (Input.GetButtonDown("Jump") && isGrounded)
+        {
+            Debug.Log("jump!");
+            velocity.y = Mathf.Sqrt(jumpHeight * gravity);
+        }
+
+        velocity.y -= gravity * Time.deltaTime;
+
+        controller.Move(velocity * Time.deltaTime);
+
     }
 }
+
