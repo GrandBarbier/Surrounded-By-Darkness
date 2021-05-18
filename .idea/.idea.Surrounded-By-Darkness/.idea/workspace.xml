@@ -4,12 +4,6 @@
     <list default="true" id="7cccdc90-3ce7-4f5d-a667-1dcb3377d0b2" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Surrounded-By-Darkness/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Surrounded-By-Darkness/.idea/indexLayout.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Surrounded-By-Darkness/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Surrounded-By-Darkness/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/SampleSceneAssets/Scripts/Movement.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/SampleSceneAssets/Scripts/Movement.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/Alan.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/Alan.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/HDRPProjectSettings.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/InputManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -76,7 +70,7 @@
       <option name="presentableId" value="Default" />
       <updated>1620819538076</updated>
       <workItem from="1620819560742" duration="8714000" />
-      <workItem from="1621237342857" duration="6181000" />
+      <workItem from="1621237342857" duration="6300000" />
     </task>
     <servers />
   </component>
