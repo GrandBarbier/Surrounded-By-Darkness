@@ -22,12 +22,13 @@ public class LightSensor : MonoBehaviour
         RenderTexture.active = previous;
         RenderTexture.ReleaseTemporary(tmpTexture);
 
-        Color32[] colors = temp2DTexture.GetPixels32();
+        Color[] colors = temp2DTexture.GetPixels(1);
 
         lightLevel = 0;
         for (int i = 0; i < colors.Length; i++)
         {
-            lightLevel += (0.2126f * colors[i].r) + (0.7152f * colors[i].g) + (0.0722f + colors[i].b);
+            //lightLevel += (0.02126f * colors[i].r) + (0.07152f * colors[i].g) + (0.00722f * colors[i].b);
+            lightLevel += (colors[i].r + colors[i].g + colors[i].b);
         }
 
         Debug.Log(lightLevel);
