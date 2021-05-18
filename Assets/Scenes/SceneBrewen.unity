@@ -379,8 +379,8 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _L1_color: {r: 1.8127714, g: 1.8127714, b: 1.8127714, a: 0.2894163}
-    - _L1_dir: {r: -0.3902012, g: 0.44747114, b: 0.80468166, a: 0}
+    - _L1_color: {r: 1.9151987, g: 1.9151987, b: 1.9151987, a: 0.30576923}
+    - _L1_dir: {r: -0.28854746, g: 0.4653247, b: 0.8367875, a: 0}
     - _L2_color: {r: 0.37508246, g: 0.37508246, b: 0.37508246, a: 0.059883434}
     - _L2_dir: {r: -0.93135333, g: 0.1769594, b: 0.31822383, a: 0}
     - _L3_color: {r: 0.22848873, g: 0.22848873, b: 0.22848873, a: 0.036479153}
@@ -10432,7 +10432,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783439734}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 6.55, y: 4.06, z: -5.66}
+  m_LocalPosition: {x: 7.2, y: 4.06, z: -5.66}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -21032,8 +21032,8 @@ Material:
     - _EmissiveColorLDR: {r: 0, g: 0, b: 0, a: 1}
     - _InvPrimScale: {r: 1, g: 1, b: 0, a: 0}
     - _IridescenceThicknessRemap: {r: 0, g: 1, b: 0, a: 0}
-    - _L1_color: {r: 2.8308432, g: 2.8308432, b: 2.8308432, a: 0.45195562}
-    - _L1_dir: {r: 0.4491213, g: 0.63672394, b: -0.6267956, a: 0}
+    - _L1_color: {r: 2.5898292, g: 2.5898292, b: 2.5898292, a: 0.41347677}
+    - _L1_dir: {r: 0.5635495, g: 0.58870006, b: -0.5795206, a: 0}
     - _L2_color: {r: 0.8010362, g: 0.8010362, b: 0.8010362, a: 0.12788868}
     - _L2_dir: {r: 0.40479195, g: 0.2684981, b: 0.87410086, a: 0}
     - _L3_color: {r: 0.7244186, g: 0.7244186, b: 0.7244186, a: 0.11565636}
