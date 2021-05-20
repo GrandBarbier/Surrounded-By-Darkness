@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class MenuManager : MonoBehaviour
@@ -35,6 +36,15 @@ public class MenuManager : MonoBehaviour
     public Button backButton;
 
     private List<GameObject> allPanels;
+
+    public PlayerInput playerInput;
+
+    void Awake()
+    {
+        playerInput.actions["Interact"].performed += context => Debug.Log("Interaction");
+        playerInput.actions["Escape"].performed += context => Menu();
+        playerInput.actions["EscapeMenu"].performed += context => Menu();
+    }
 
     void Start()
     {
@@ -90,11 +100,13 @@ public class MenuManager : MonoBehaviour
     {
         if (menu)
         {
-            menuPanel.SetActive(false);
+            HideAllPanel();
+            playerInput.SwitchCurrentActionMap("Gameplay");
         }
         else
         {
             GoToPanel(menuPanel, null, null, PanelMaps[0], false);
+            playerInput.SwitchCurrentActionMap("Menu");
         }
 
         menu = !menu;
@@ -132,7 +144,7 @@ public class MenuManager : MonoBehaviour
         backButton.gameObject.SetActive(true);
         
         backButton.transform.SetParent(currentPanel.transform);
-        
+
         backButton.onClick.RemoveAllListeners();
         
         backButton.onClick.AddListener(() => menuToGo.SetActive(true));

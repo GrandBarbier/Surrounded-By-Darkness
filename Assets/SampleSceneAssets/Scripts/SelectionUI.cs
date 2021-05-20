@@ -7,7 +7,15 @@ public class SelectionUI : MonoBehaviour
     public MenuManager menuManager;
 
     public Vector2Int posOnMap;
-    
+
+    void Awake()
+    {
+        menuManager.playerInput.actions["MoveMenu"].performed += context => MoveMapPosition(
+            new Vector2Int((int) context.ReadValue<Vector2>().x, (int) context.ReadValue<Vector2>().y));
+
+        menuManager.playerInput.actions["Enter"].performed += context => TriggerSelection();
+    }
+
     void Start()
     {
         
@@ -15,7 +23,7 @@ public class SelectionUI : MonoBehaviour
     
     void Update()
     {
-        foreach (var interaction in InputManager.forwardKeys)
+        /*foreach (var interaction in InputManager.forwardKeys)
         {
             if (Input.GetKeyDown(interaction))
             {
@@ -46,11 +54,18 @@ public class SelectionUI : MonoBehaviour
                 MoveMapPosition(new Vector2Int(1,0));
                 break;
             }
-        }
+        }*/
     }
 
-    public void MoveMapPosition(Vector2Int vector2Int)
+    public void TriggerSelection()
     {
+        
+    }
+
+    public void MoveMapPosition(Vector2Int vector2I)
+    {
+        Vector2Int vector2Int = new Vector2Int(vector2I.x, -vector2I.y);
+        
         if (menuManager.currentMap.map.GetLength(0) > posOnMap.x + vector2Int.x)
         {
             if (posOnMap.x + vector2Int.x >= 0)
