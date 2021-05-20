@@ -494,7 +494,7 @@ RectTransform:
   - {fileID: 714437774}
   - {fileID: 256165976}
   m_Father: {fileID: 1019709291}
-  m_RootOrder: 3
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3729,9 +3729,9 @@ RectTransform:
   - {fileID: 213339031}
   - {fileID: 732933648}
   - {fileID: 1033804600}
-  - {fileID: 149360405}
   - {fileID: 1916612188}
   - {fileID: 1725665747}
+  - {fileID: 149360405}
   - {fileID: 58697120}
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -3814,7 +3814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6c0c98fa15347d64c919b697d12138de, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selection: {fileID: 1286512331}
+  selection: {fileID: 1286512335}
   menuPanel: {fileID: 732933647}
   parametersPanel: {fileID: 1033804599}
   inputsPanel: {fileID: 149360404}
@@ -6477,7 +6477,7 @@ RectTransform:
   - {fileID: 871365956}
   - {fileID: 137935097}
   m_Father: {fileID: 1019709291}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -7078,7 +7078,7 @@ RectTransform:
   m_Children:
   - {fileID: 1978257910}
   m_Father: {fileID: 1019709291}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}

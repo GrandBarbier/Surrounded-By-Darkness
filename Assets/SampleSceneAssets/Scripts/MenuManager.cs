@@ -9,7 +9,7 @@ using UnityEngine.UI;
 public class MenuManager : MonoBehaviour
 {
     public PanelMap[] PanelMaps;
-    public GameObject selection;
+    public SelectionUI selection;
 
     [NonSerialized] public PanelMap currentMap;
     
@@ -51,14 +51,19 @@ public class MenuManager : MonoBehaviour
         allPanels = new List<GameObject>{parametersPanel, menuPanel, inputsPanel, savePanel, languagePanel};
 
         PanelMaps = new[] {new PanelMap("PauseMap", 
-            new RectTransform[, ] {{resumeButton.GetComponent<RectTransform>(), parameterButton.GetComponent<RectTransform>(), saveButton.GetComponent<RectTransform>()}}, 
-            new Vector2Int(0, 0)),  };
+            new [, ] {{resumeButton.GetComponent<RectTransform>(), parameterButton.GetComponent<RectTransform>(), saveButton.GetComponent<RectTransform>()}}, 
+            new Vector2Int(0, 0)),  
+            new PanelMap("ParameterMap", new [,] {{languagesButton.GetComponent<RectTransform>(), backButton.GetComponent<RectTransform>()}}, 
+                new Vector2Int(0, 0)), 
+            new PanelMap("LanguageMap", new [,] {{englishButton.GetComponent<RectTransform>(), frenchButton.GetComponent<RectTransform>()}}, 
+                new Vector2Int(0, 0)), 
+        };
 
         resumeButton?.onClick.AddListener(Menu);
         
         //Go to parameter panel when you click parameter button
         parameterButton?.onClick.AddListener(() => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
-            () => backButton.gameObject.SetActive(false)));
+            () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[1]));
         
         //Go to save panel when you click save button
         saveButton?.onClick.AddListener(() => GoToPanel(savePanel, saveButton.transform.parent.gameObject, 
@@ -119,15 +124,16 @@ public class MenuManager : MonoBehaviour
         panelToGo.SetActive(true);
         selection.transform.SetParent(panelToGo.transform);
 
+        if (enableBackButton)
+        {
+            SetBackButton(panelToGoBackButton, panelToGo, () => backButton.onClick.AddListener(backButtonAction));
+        }
+
         if (panelMap != null)
         {
             currentMap = panelMap;
             selection.GetComponent<RectTransform>().position = panelMap.map[panelMap.startPos.x, panelMap.startPos.y].position;
-        }
-
-        if (enableBackButton)
-        {
-            SetBackButton(panelToGoBackButton, panelToGo, () => backButton.onClick.AddListener(backButtonAction));
+            selection.posOnMap = currentMap.startPos;
         }
     }
 

@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SelectionUI : MonoBehaviour
 {
@@ -59,7 +60,10 @@ public class SelectionUI : MonoBehaviour
 
     public void TriggerSelection()
     {
-        
+        if (menuManager.currentMap.map[posOnMap.x, posOnMap.y].TryGetComponent(out Button button))
+        {
+            button.onClick?.Invoke();
+        }
     }
 
     public void MoveMapPosition(Vector2Int vector2I)
