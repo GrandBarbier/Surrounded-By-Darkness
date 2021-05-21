@@ -87,7 +87,7 @@ public class MenuManager : MonoBehaviour
         frenchButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.French));
         frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
     }
-    
+
     void Update()
     {
         
@@ -159,6 +159,41 @@ public class MenuManager : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
         
         button.GetComponent<Image>().color = button.colors.normalColor;
+    }
+
+    public IInteractable Interact(float interactionRadius)
+    {
+        RaycastHit[] hits = Physics.SphereCastAll(transform.position, interactionRadius, gameObject.transform.forward, 
+            Mathf.Infinity, Gears.gears.interactionLayer);
+
+        Dictionary<IInteractable, GameObject> interactable = new Dictionary<IInteractable, GameObject>();
+        
+        List<IInteractable> interact = new List<IInteractable>();
+        
+        for (int i = 0; i < hits.Length; i++)
+        {
+            if (hits[i].collider.TryGetComponent(out IInteractable interaction))
+            {
+                interactable.Add(interaction, hits[i].collider.gameObject);
+                interact.Add(interaction);
+            }
+        }
+
+        IInteractable interactionF = null;
+        float distance = Mathf.Infinity;
+        
+        for (int i = 0; i < interactable.Count; i++)
+        {
+            if (Vector3.Distance(transform.position, interactable[interact[i]].transform.position) < distance)
+            {
+                distance = Vector3.Distance(transform.position, interactable[interact[i]].transform.position);
+                interactionF = interact[i];
+            }
+        }
+        
+        interactionF?.Interact();
+
+        return interactionF;
     }
 }
 

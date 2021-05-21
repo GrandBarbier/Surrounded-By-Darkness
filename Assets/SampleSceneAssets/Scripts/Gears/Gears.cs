@@ -11,6 +11,8 @@ public class Gears : MonoBehaviour
 
     public Image blackPanel;
 
+    public LayerMask interactionLayer;
+
     void Awake()
     {
         if (gears == null)
