@@ -63,6 +63,7 @@
             <e p="Gears.cs" t="Include" />
             <e p="InputManager.cs" t="Include" />
             <e p="LanguageSystem.cs" t="Include" />
+            <e p="LevelManager.cs" t="Include" />
             <e p="MenuManager.cs" t="Include" />
             <e p="SelectionUI.cs" t="Include" />
             <e p="SetTextLanguage.cs" t="Include" />

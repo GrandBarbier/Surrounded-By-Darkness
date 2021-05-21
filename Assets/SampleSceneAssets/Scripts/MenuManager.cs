@@ -83,7 +83,9 @@ public class MenuManager : MonoBehaviour
         
         //Change language when you click languages buttons
         englishButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.English));
+        englishButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(englishButton)));
         frenchButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.French));
+        frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
     }
     
     void Update()
@@ -148,6 +150,15 @@ public class MenuManager : MonoBehaviour
         backButton.onClick.AddListener(() => currentPanel.SetActive(false));
         
         action?.Invoke();
+    }
+    
+    public static IEnumerator TriggerButtonColor(Button button)
+    {
+        button.GetComponent<Image>().color = button.colors.pressedColor;
+        
+        yield return new WaitForSeconds(0.1f);
+        
+        button.GetComponent<Image>().color = button.colors.normalColor;
     }
 }
 

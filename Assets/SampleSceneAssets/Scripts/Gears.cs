@@ -1,12 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class Gears : MonoBehaviour
 {
     public static Gears gears;
 
     public InputManager InputManager;
+
+    public Image blackPanel;
 
     void Awake()
     {
@@ -15,7 +18,7 @@ public class Gears : MonoBehaviour
             gears = this;
             DontDestroyOnLoad(gameObject);
             LanguageSystem.Init();
-            InputManager.Start();
+            //InputManager.Start();
         }
         else
         {
@@ -25,7 +28,7 @@ public class Gears : MonoBehaviour
     
     void Start()
     {
-        
+        StartCoroutine(LevelManager.FadeDuration(start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
     }
     
     void Update()
