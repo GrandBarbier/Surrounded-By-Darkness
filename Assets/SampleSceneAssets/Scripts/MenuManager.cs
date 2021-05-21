@@ -55,8 +55,10 @@ public class MenuManager : MonoBehaviour
             new Vector2Int(0, 0)),  
             new PanelMap("ParameterMap", new [,] {{languagesButton.GetComponent<RectTransform>(), backButton.GetComponent<RectTransform>()}}, 
                 new Vector2Int(0, 0)), 
-            new PanelMap("LanguageMap", new [,] {{englishButton.GetComponent<RectTransform>(), frenchButton.GetComponent<RectTransform>()}}, 
+            new PanelMap("LanguageMap", new [,] {{englishButton.GetComponent<RectTransform>(), frenchButton.GetComponent<RectTransform>(), 
+                    backButton.GetComponent<RectTransform>()}}, 
                 new Vector2Int(0, 0)), 
+            new PanelMap("Save Panel", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
         };
 
         resumeButton?.onClick.AddListener(Menu);
@@ -67,17 +69,17 @@ public class MenuManager : MonoBehaviour
         
         //Go to save panel when you click save button
         saveButton?.onClick.AddListener(() => GoToPanel(savePanel, saveButton.transform.parent.gameObject, 
-            () => backButton.gameObject.SetActive(false)));
+            () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[3]));
         
         //Go to Inputs panel when you click inputs button and setup the back button to go back to parameter panel
         inputsButton?.onClick.AddListener(() => GoToPanel(inputsPanel, inputsButton.transform.parent.gameObject, 
             () => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
-                () => backButton.gameObject.SetActive(false))));
+                () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[1])));
         
         //Go to language panel when you click language button and setup the back button to go back to parameter panel
         languagesButton?.onClick.AddListener(() => GoToPanel(languagePanel, languagePanel.transform.parent.gameObject, 
             () => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
-                () => backButton.gameObject.SetActive(false))));
+                () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[1]), PanelMaps[2]));
         
         //Change language when you click languages buttons
         englishButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.English));
@@ -86,19 +88,7 @@ public class MenuManager : MonoBehaviour
     
     void Update()
     {
-        if (Input.GetButtonDown("Cancel"))
-        {
-            Menu();
-        }
         
-        foreach (var interaction in InputManager.interactionKeys)
-        {
-            if (Input.GetKeyDown(interaction))
-            {
-                Debug.Log("Interaction_01");
-                break;
-            }
-        }
     }
     
     public void Menu()
@@ -123,6 +113,7 @@ public class MenuManager : MonoBehaviour
         
         panelToGo.SetActive(true);
         selection.transform.SetParent(panelToGo.transform);
+        selection.transform.SetAsFirstSibling();
 
         if (enableBackButton)
         {
