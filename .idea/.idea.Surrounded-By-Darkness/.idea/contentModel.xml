@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="C:\Users\Cours\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Cours\.Rider2019.3\system\resharper-host\Local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.1238170594.00" t="ExcludeRecursive" />
+    <e p="E:\1.MATIERE DE COURS\2eme annee\Surrounded-By-Darkness" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="firststepbutton.cs" t="Include" />
+        <e p="Scripts" t="Include">
+          <e p="Effects" t="Include">
+            <e p="FireLight.cs" t="Include" />
+          </e>
+          <e p="LightSensor.cs" t="Include" />
+          <e p="Movement.cs" t="Include" />
+          <e p="PickUpTorch.cs" t="Include" />
+          <e p="PlaceTorch.cs" t="Include" />
+          <e p="SimpleCameraController.cs" t="Include" />
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="CustomHLSL" t="Include">
+            <e p="CustomLighting.hlsl" t="Include" />
+            <e p="Outline.hlsl" t="Include" />
+          </e>
+          <e p="ScriptableRenderFeatures" t="Include">
+            <e p="DepthNormalsFeature.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TutorialInfo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ReadmeEditor.cs" t="Include" />
+            </e>
+            <e p="Readme.cs" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="Packages" t="ExcludeRecursive" />
+      <e p="Surrounded-By-Darkness.sln" t="IncludeFlat" />
+      <e p="Temp\Bin" t="ExcludeRecursive" />
+    </e>
+  </component>
+</project>
