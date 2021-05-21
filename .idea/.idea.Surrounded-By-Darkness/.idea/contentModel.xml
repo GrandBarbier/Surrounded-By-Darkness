@@ -7,7 +7,12 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="firststepbutton.cs" t="Include" />
         <e p="Scripts" t="Include">
+          <e p="Effects" t="Include">
+            <e p="FireLight.cs" t="Include" />
+          </e>
+          <e p="LightSensor.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
           <e p="PickUpTorch.cs" t="Include" />
           <e p="PlaceTorch.cs" t="Include" />

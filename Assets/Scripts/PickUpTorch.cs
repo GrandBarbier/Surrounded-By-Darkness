@@ -7,14 +7,6 @@ public class PickUpTorch : MonoBehaviour
 {
     public GameObject player;
     public GameObject torchHandPos;
-    public float maxDistToPickUp;
-    
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-    
     private void OnTriggerEnter(Collider other)
     {
         Debug.Log("quelqu'un stay ici");
@@ -39,10 +31,5 @@ public class PickUpTorch : MonoBehaviour
             gameObject.transform.rotation = torchHandPos.transform.rotation;
             player.GetComponent<PlaceTorch>().torchOnGround = false;
         }
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
     }
 }
