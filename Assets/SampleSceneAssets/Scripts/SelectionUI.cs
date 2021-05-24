@@ -11,10 +11,10 @@ public class SelectionUI : MonoBehaviour
 
     void Awake()
     {
-        menuManager.playerInput.actions["MoveMenu"].performed += context => MoveMapPosition(
+        Gears.gears.playerInput.actions["MoveMenu"].performed += context => MoveMapPosition(
             new Vector2Int((int) context.ReadValue<Vector2>().x, (int) context.ReadValue<Vector2>().y));
 
-        menuManager.playerInput.actions["Enter"].performed += context => TriggerSelection();
+        Gears.gears.playerInput.actions["Enter"].performed += context => TriggerSelection();
     }
 
     void Start()

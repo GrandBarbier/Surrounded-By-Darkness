@@ -1,11 +1,14 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Gears : MonoBehaviour
 {
     public static Gears gears;
+
+    public PlayerInput playerInput;
 
     public InputManager InputManager;
 

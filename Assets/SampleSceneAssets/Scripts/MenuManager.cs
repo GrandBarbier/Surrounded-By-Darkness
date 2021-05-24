@@ -37,13 +37,11 @@ public class MenuManager : MonoBehaviour
 
     private List<GameObject> allPanels;
 
-    public PlayerInput playerInput;
-
     void Awake()
     {
-        playerInput.actions["Interact"].performed += context => Debug.Log("Interaction");
-        playerInput.actions["Escape"].performed += context => Menu();
-        playerInput.actions["EscapeMenu"].performed += context => Menu();
+        Gears.gears.playerInput.actions["Interact"].performed += context => Debug.Log("Interaction");
+        Gears.gears.playerInput.actions["Escape"].performed += context => Menu();
+        Gears.gears.playerInput.actions["EscapeMenu"].performed += context => Menu();
     }
 
     void Start()
@@ -98,12 +96,12 @@ public class MenuManager : MonoBehaviour
         if (menu)
         {
             HideAllPanel();
-            playerInput.SwitchCurrentActionMap("Gameplay");
+            Gears.gears.playerInput.SwitchCurrentActionMap("Gameplay");
         }
         else
         {
             GoToPanel(menuPanel, null, null, PanelMaps[0], false);
-            playerInput.SwitchCurrentActionMap("Menu");
+            Gears.gears.playerInput.SwitchCurrentActionMap("Menu");
         }
 
         menu = !menu;

@@ -46,6 +46,34 @@
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
+        <e p="Plugins" t="Include">
+          <e p="SimpleFileBrowser" t="Include">
+            <e p="Android" t="Include">
+              <e p="FBCallbackHelper.cs" t="Include" />
+              <e p="FBDirectoryReceiveCallbackAndroid.cs" t="Include" />
+              <e p="FBPermissionCallbackAndroid.cs" t="Include" />
+            </e>
+            <e p="README.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="FileBrowser.cs" t="Include" />
+              <e p="FileBrowserContextMenu.cs" t="Include" />
+              <e p="FileBrowserCursorHandler.cs" t="Include" />
+              <e p="FileBrowserDeleteConfirmationPanel.cs" t="Include" />
+              <e p="FileBrowserHelpers.cs" t="Include" />
+              <e p="FileBrowserItem.cs" t="Include" />
+              <e p="FileBrowserMovement.cs" t="Include" />
+              <e p="FileBrowserQuickLink.cs" t="Include" />
+              <e p="FileBrowserRenamedItem.cs" t="Include" />
+              <e p="NonDrawingGraphic.cs" t="Include" />
+              <e p="SimpleRecycledListView" t="Include">
+                <e p="IListViewAdapter.cs" t="Include" />
+                <e p="ListItem.cs" t="Include" />
+                <e p="RecycledListView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="SimpleFileBrowser.Runtime.asmdef" t="Include" />
+          </e>
+        </e>
         <e p="Samples" t="Include">
           <e p="Input System" t="Include">
             <e p="1.0.2" t="Include">
@@ -60,11 +88,13 @@
         </e>
         <e p="SampleSceneAssets" t="Include">
           <e p="Scripts" t="Include">
+            <e p="FileBrowserTest.cs" t="Include" />
             <e p="Gears" t="Include">
               <e p="Gears.cs" t="Include" />
               <e p="InputManager.cs" t="Include" />
               <e p="LanguageSystem.cs" t="Include" />
               <e p="LevelManager.cs" t="Include" />
+              <e p="SavePanel.cs" t="Include" />
             </e>
             <e p="IInteractable.cs" t="Include" />
             <e p="Interactable.cs" t="Include" />
@@ -145,7 +175,11 @@
 >>>>>>> Input manager Proto
 =======
       <e p="Packages" t="ExcludeRecursive" />
+<<<<<<< main
 >>>>>>> new input system
+=======
+      <e p="SimpleFileBrowser.Runtime.csproj" t="IncludeRecursive" />
+>>>>>>> Update
       <e p="Surrounded-By-Darkness.sln" t="IncludeFlat" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
       <e p="Unity.InputSystem.RebindingUI.csproj" t="IncludeRecursive" />
