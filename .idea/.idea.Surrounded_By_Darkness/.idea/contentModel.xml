@@ -11,6 +11,8 @@
           <e p="Effects" t="Include">
             <e p="FireLight.cs" t="Include" />
           </e>
+          <e p="LightSensor.cs" t="Include" />
+          <e p="Movement.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">

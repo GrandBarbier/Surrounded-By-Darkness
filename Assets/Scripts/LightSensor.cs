@@ -1,13 +1,36 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class LightSensor : MonoBehaviour
 {
     public RenderTexture lightCheckTexture;
     public float lightLevel;
 
+    public float deathLevel;
+    public float maxDeathLevel;
+
+    public Slider deathSlider;
+    
+    private void Start()
+    {
+        Cursor.lockState = CursorLockMode.Locked;
+        Cursor.visible = false;
+
+        deathLevel = 0;
+        deathSlider.maxValue = maxDeathLevel;
+    }
+
     void Update()
+    {
+        LightCheck();
+        
+        DeathLevel();
+    }
+
+    public void LightCheck()
     {
         RenderTexture tmpTexture = RenderTexture.GetTemporary(lightCheckTexture.width, lightCheckTexture.height, 0,
             RenderTextureFormat.Default, RenderTextureReadWrite.Linear);
@@ -32,5 +55,29 @@ public class LightSensor : MonoBehaviour
         }
 
         Debug.Log(lightLevel);
+    }
+
+    public void DeathLevel()
+    {
+        if (deathLevel <= 0)
+        {
+            deathLevel = 0;
+        }
+        else if (deathLevel >= maxDeathLevel)
+        {
+            Debug.Log("DED");
+            deathLevel = maxDeathLevel;
+        }
+
+        if (lightLevel <= 20f)
+        {
+            deathLevel += Time.deltaTime;
+        }
+        else
+        {
+            deathLevel -= Time.deltaTime;
+        }
+
+        deathSlider.value = deathLevel;
     }
 }

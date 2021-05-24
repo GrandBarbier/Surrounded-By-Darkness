@@ -11,12 +11,14 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightSensor.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Effects/FireLight.cs" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Effects/FireLight.cs" />
+        <option value="$PROJECT_DIR$/Assets/Scripts/LightSensor.cs" />
       </list>
     </option>
   </component>
@@ -69,6 +71,7 @@
       <option name="presentableId" value="Default" />
       <updated>1621502292543</updated>
       <workItem from="1621502307309" duration="2377000" />
+      <workItem from="1621602879293" duration="2780000" />
     </task>
     <servers />
   </component>
@@ -82,7 +85,9 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
           </value>
         </entry>
       </map>
