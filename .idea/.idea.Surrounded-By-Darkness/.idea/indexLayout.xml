@@ -2,6 +2,7 @@
 <project version="4">
   <component name="ContentModelUserStore">
     <attachedFolders />
+<<<<<<< main
     <explicitIncludes>
       <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.mathematics@1.1.0</Path>
       <Path>$USER_HOME$/AppData/Local/Unity/cache/packages/packages.unity.com/com.unity.searcher@4.3.1</Path>
@@ -65,5 +66,9 @@
       <Path>UserSettings</Path>
       <Path>obj</Path>
     </explicitExcludes>
+=======
+    <explicitIncludes />
+    <explicitExcludes />
+>>>>>>> Input manager Proto
   </component>
 </project>

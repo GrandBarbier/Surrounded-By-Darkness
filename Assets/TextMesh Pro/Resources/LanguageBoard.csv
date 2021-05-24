@@ -1,0 +1,5 @@
+ID;Français;English;Spanish
+0 : PlayButtonText;Jouer;Play;
+1 : QuitButton;Quitter;Quit;
+2 : InteractionKey;Interaction;Interaction;
+3 : Resume;Reprendre;Resume;

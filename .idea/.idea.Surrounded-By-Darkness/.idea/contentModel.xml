@@ -1,6 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< main
+<<<<<<< main
     <e p="C:\Users\Cours\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Cours\.Rider2019.3\system\resharper-host\Local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.1238170594.00" t="ExcludeRecursive" />
     <e p="E:\1.MATIERE DE COURS\2eme annee\Surrounded-By-Darkness" t="IncludeRecursive">
@@ -33,13 +35,157 @@
               <e p="ReadmeEditor.cs" t="Include" />
             </e>
             <e p="Readme.cs" t="Include" />
+=======
+    <e p="C:\Users\yoanl\.Rider2019.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\yoanl\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\yoanl\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.1423793808.00" t="ExcludeRecursive" />
+    <e p="D:\Documents\Unity\Unity GIT\Surrounded-By-Darkness" t="IncludeRecursive">
+=======
+    <e p="C:\Doc\Unity Project\Surrounded-By-Darkness" t="IncludeRecursive">
+>>>>>>> new input system
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Plugins" t="Include">
+          <e p="SimpleFileBrowser" t="Include">
+            <e p="Android" t="Include">
+              <e p="FBCallbackHelper.cs" t="Include" />
+              <e p="FBDirectoryReceiveCallbackAndroid.cs" t="Include" />
+              <e p="FBPermissionCallbackAndroid.cs" t="Include" />
+            </e>
+            <e p="README.txt" t="Include" />
+            <e p="Scripts" t="Include">
+              <e p="FileBrowser.cs" t="Include" />
+              <e p="FileBrowserContextMenu.cs" t="Include" />
+              <e p="FileBrowserCursorHandler.cs" t="Include" />
+              <e p="FileBrowserDeleteConfirmationPanel.cs" t="Include" />
+              <e p="FileBrowserHelpers.cs" t="Include" />
+              <e p="FileBrowserItem.cs" t="Include" />
+              <e p="FileBrowserMovement.cs" t="Include" />
+              <e p="FileBrowserQuickLink.cs" t="Include" />
+              <e p="FileBrowserRenamedItem.cs" t="Include" />
+              <e p="NonDrawingGraphic.cs" t="Include" />
+              <e p="SimpleRecycledListView" t="Include">
+                <e p="IListViewAdapter.cs" t="Include" />
+                <e p="ListItem.cs" t="Include" />
+                <e p="RecycledListView.cs" t="Include" />
+              </e>
+            </e>
+            <e p="SimpleFileBrowser.Runtime.asmdef" t="Include" />
+          </e>
+        </e>
+        <e p="Samples" t="Include">
+          <e p="Input System" t="Include">
+            <e p="1.0.2" t="Include">
+              <e p="Rebinding UI" t="Include">
+                <e p="GamepadIconsExample.cs" t="Include" />
+                <e p="RebindActionUI.cs" t="Include" />
+                <e p="RebindActionUIEditor.cs" t="Include" />
+                <e p="Unity.InputSystem.RebindingUI.asmdef" t="Include" />
+              </e>
+            </e>
+          </e>
+        </e>
+        <e p="SampleSceneAssets" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="FileBrowserTest.cs" t="Include" />
+            <e p="Gears" t="Include">
+              <e p="Gears.cs" t="Include" />
+              <e p="InputManager.cs" t="Include" />
+              <e p="LanguageSystem.cs" t="Include" />
+              <e p="LevelManager.cs" t="Include" />
+              <e p="SavePanel.cs" t="Include" />
+            </e>
+            <e p="IInteractable.cs" t="Include" />
+            <e p="Interactable.cs" t="Include" />
+            <e p="MenuManager.cs" t="Include" />
+            <e p="SelectionUI.cs" t="Include" />
+            <e p="SetTextLanguage.cs" t="Include" />
+            <e p="TriggerInteraction.cs" t="Include" />
+          </e>
+        </e>
+        <e p="Scripts" t="Include">
+          <e p="Effects" t="Include">
+            <e p="FireLight.cs" t="Include" />
+          </e>
+          <e p="LightSensor.cs" t="Include" />
+          <e p="Movement.cs" t="Include" />
+          <e p="SimpleCameraController.cs" t="Include" />
+        </e>
+        <e p="Shaders" t="Include">
+          <e p="CustomHLSL" t="Include">
+            <e p="CustomLighting.hlsl" t="Include" />
+            <e p="Outline.hlsl" t="Include" />
+          </e>
+          <e p="ScriptableRenderFeatures" t="Include">
+            <e p="DepthNormalsFeature.cs" t="Include" />
+          </e>
+        </e>
+        <e p="TextMesh Pro" t="Include">
+          <e p="Fonts" t="Include">
+            <e p="LiberationSans - OFL.txt" t="Include" />
+          </e>
+          <e p="Resources" t="Include">
+            <e p="LineBreaking Following Characters.txt" t="Include" />
+            <e p="LineBreaking Leading Characters.txt" t="Include" />
+          </e>
+          <e p="Shaders" t="Include">
+            <e p="TMP_Bitmap-Custom-Atlas.shader" t="Include" />
+            <e p="TMP_Bitmap-Mobile.shader" t="Include" />
+            <e p="TMP_Bitmap.shader" t="Include" />
+            <e p="TMP_SDF Overlay.shader" t="Include" />
+            <e p="TMP_SDF SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Masking.shader" t="Include" />
+            <e p="TMP_SDF-Mobile Overlay.shader" t="Include" />
+            <e p="TMP_SDF-Mobile SSD.shader" t="Include" />
+            <e p="TMP_SDF-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface-Mobile.shader" t="Include" />
+            <e p="TMP_SDF-Surface.shader" t="Include" />
+            <e p="TMP_SDF.shader" t="Include" />
+            <e p="TMP_Sprite.shader" t="Include" />
+            <e p="TMPro.cginc" t="Include" />
+            <e p="TMPro_Mobile.cginc" t="Include" />
+            <e p="TMPro_Properties.cginc" t="Include" />
+            <e p="TMPro_Surface.cginc" t="Include" />
+          </e>
+          <e p="Sprites" t="Include">
+            <e p="EmojiOne Attribution.txt" t="Include" />
+<<<<<<< main
+>>>>>>> Input manager Proto
+=======
+            <e p="EmojiOne.json" t="Include" />
+          </e>
+        </e>
+        <e p="TutorialInfo" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="Editor" t="Include">
+              <e p="ReadmeEditor.cs" t="Include" />
+            </e>
+            <e p="Readme.cs" t="Include" />
+>>>>>>> new input system
           </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
+<<<<<<< main
+<<<<<<< main
       <e p="Packages" t="ExcludeRecursive" />
+=======
+      <e p="packages" t="ExcludeRecursive" />
+>>>>>>> Input manager Proto
+=======
+      <e p="Packages" t="ExcludeRecursive" />
+<<<<<<< main
+>>>>>>> new input system
+=======
+      <e p="SimpleFileBrowser.Runtime.csproj" t="IncludeRecursive" />
+>>>>>>> Update
       <e p="Surrounded-By-Darkness.sln" t="IncludeFlat" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
+      <e p="Unity.InputSystem.RebindingUI.csproj" t="IncludeRecursive" />
     </e>
+    <e p="C:\Users\yoanl\.Rider2019.3\config\scratches" t="IncludeRecursive" />
+    <e p="C:\Users\yoanl\.Rider2019.3\system\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\yoanl\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.-2013907617.00" t="ExcludeRecursive" />
   </component>
 </project>
