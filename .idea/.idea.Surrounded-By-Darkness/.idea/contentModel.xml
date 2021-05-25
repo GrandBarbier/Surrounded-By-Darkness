@@ -1,51 +1,14 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
-<<<<<<< main
-<<<<<<< main
-    <e p="C:\Users\Cours\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\Cours\.Rider2019.3\system\resharper-host\Local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.1238170594.00" t="ExcludeRecursive" />
-    <e p="E:\1.MATIERE DE COURS\2eme annee\Surrounded-By-Darkness" t="IncludeRecursive">
+    <e p="C:\Users\Alan Gryfs\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alan Gryfs\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Surrounded-By-Darkness.-822153408.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alan Gryfs\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
+    <e p="D:\GitKraken\Surrounded-By-Darkness" t="IncludeRecursive">
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">
         <e p="firststepbutton.cs" t="Include" />
-        <e p="Scripts" t="Include">
-          <e p="Effects" t="Include">
-            <e p="FireLight.cs" t="Include" />
-          </e>
-          <e p="LightSensor.cs" t="Include" />
-          <e p="Movement.cs" t="Include" />
-          <e p="PickUpTorch.cs" t="Include" />
-          <e p="PlaceTorch.cs" t="Include" />
-          <e p="SimpleCameraController.cs" t="Include" />
-        </e>
-        <e p="Shaders" t="Include">
-          <e p="CustomHLSL" t="Include">
-            <e p="CustomLighting.hlsl" t="Include" />
-            <e p="Outline.hlsl" t="Include" />
-          </e>
-          <e p="ScriptableRenderFeatures" t="Include">
-            <e p="DepthNormalsFeature.cs" t="Include" />
-          </e>
-        </e>
-        <e p="TutorialInfo" t="Include">
-          <e p="Scripts" t="Include">
-            <e p="Editor" t="Include">
-              <e p="ReadmeEditor.cs" t="Include" />
-            </e>
-            <e p="Readme.cs" t="Include" />
-=======
-    <e p="C:\Users\yoanl\.Rider2019.3\config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\yoanl\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\yoanl\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.1423793808.00" t="ExcludeRecursive" />
-    <e p="D:\Documents\Unity\Unity GIT\Surrounded-By-Darkness" t="IncludeRecursive">
-=======
-    <e p="C:\Doc\Unity Project\Surrounded-By-Darkness" t="IncludeRecursive">
->>>>>>> new input system
-      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
-      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
-      <e p="Assets" t="Include">
         <e p="Plugins" t="Include">
           <e p="SimpleFileBrowser" t="Include">
             <e p="Android" t="Include">
@@ -110,6 +73,8 @@
           </e>
           <e p="LightSensor.cs" t="Include" />
           <e p="Movement.cs" t="Include" />
+          <e p="PickUpTorch.cs" t="Include" />
+          <e p="PlaceTorch.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
@@ -150,9 +115,6 @@
           </e>
           <e p="Sprites" t="Include">
             <e p="EmojiOne Attribution.txt" t="Include" />
-<<<<<<< main
->>>>>>> Input manager Proto
-=======
             <e p="EmojiOne.json" t="Include" />
           </e>
         </e>
@@ -162,30 +124,15 @@
               <e p="ReadmeEditor.cs" t="Include" />
             </e>
             <e p="Readme.cs" t="Include" />
->>>>>>> new input system
           </e>
         </e>
       </e>
       <e p="obj" t="ExcludeRecursive" />
-<<<<<<< main
-<<<<<<< main
       <e p="Packages" t="ExcludeRecursive" />
-=======
-      <e p="packages" t="ExcludeRecursive" />
->>>>>>> Input manager Proto
-=======
-      <e p="Packages" t="ExcludeRecursive" />
-<<<<<<< main
->>>>>>> new input system
-=======
       <e p="SimpleFileBrowser.Runtime.csproj" t="IncludeRecursive" />
->>>>>>> Update
       <e p="Surrounded-By-Darkness.sln" t="IncludeFlat" />
       <e p="Temp\Bin" t="ExcludeRecursive" />
       <e p="Unity.InputSystem.RebindingUI.csproj" t="IncludeRecursive" />
     </e>
-    <e p="C:\Users\yoanl\.Rider2019.3\config\scratches" t="IncludeRecursive" />
-    <e p="C:\Users\yoanl\.Rider2019.3\system\extResources" t="IncludeRecursive" />
-    <e p="C:\Users\yoanl\.Rider2019.3\system\resharper-host\local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.-2013907617.00" t="ExcludeRecursive" />
   </component>
 </project>
