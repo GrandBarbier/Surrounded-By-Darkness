@@ -1,11 +1,18 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ContentModelStore">
+<<<<<<< Updated upstream
 <<<<<<< main
 <<<<<<< main
     <e p="C:\Users\Cours\.Rider2019.3\system\extResources" t="IncludeRecursive" />
     <e p="C:\Users\Cours\.Rider2019.3\system\resharper-host\Local\Transient\ReSharperHost\v193\SolutionCaches\_Surrounded-By-Darkness.1238170594.00" t="ExcludeRecursive" />
     <e p="E:\1.MATIERE DE COURS\2eme annee\Surrounded-By-Darkness" t="IncludeRecursive">
+=======
+    <e p="C:\Users\Alan Gryfs\AppData\Local\JetBrains\Rider2020.2\extResources" t="IncludeRecursive" />
+    <e p="C:\Users\Alan Gryfs\AppData\Local\JetBrains\Rider2020.2\resharper-host\Local\Transient\Rider\v202\SolutionCaches\_Surrounded-By-Darkness.-822153408.00" t="ExcludeRecursive" />
+    <e p="C:\Users\Alan Gryfs\AppData\Roaming\JetBrains\Rider2020.2\scratches" t="IncludeRecursive" />
+    <e p="D:\GitKraken\Surrounded-By-Darkness" t="IncludeRecursive">
+>>>>>>> Stashed changes
       <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
       <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
       <e p="Assets" t="Include">

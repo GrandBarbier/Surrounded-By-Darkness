@@ -568,8 +568,16 @@ PrefabInstance:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 6578534915012659141, guid: e745689355db74549abc053d0ad00e8a, type: 3}
+      propertyPath: m_SplineCurvature
+      value: 0.2
+      objectReference: {fileID: 0}
+    - target: {fileID: 6578534915012659141, guid: e745689355db74549abc053d0ad00e8a, type: 3}
       propertyPath: m_Lens.m_SensorSize.x
       value: 0.6356467
+      objectReference: {fileID: 0}
+    - target: {fileID: 6578534915012659141, guid: e745689355db74549abc053d0ad00e8a, type: 3}
+      propertyPath: m_Heading.m_Definition
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6578534915012659141, guid: e745689355db74549abc053d0ad00e8a, type: 3}
       propertyPath: m_YAxisRecentering.m_enabled
@@ -577,11 +585,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6578534915161936829, guid: e745689355db74549abc053d0ad00e8a, type: 3}
       propertyPath: m_LocalRotation.y
-      value: -0.000000017618557
+      value: 0.00000001761856
       objectReference: {fileID: 0}
     - target: {fileID: 6578534915161936829, guid: e745689355db74549abc053d0ad00e8a, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0.0000000020370685
+      value: -0.000000002037069
       objectReference: {fileID: 0}
     - target: {fileID: 6578534915264672025, guid: e745689355db74549abc053d0ad00e8a, type: 3}
       propertyPath: m_RootOrder
