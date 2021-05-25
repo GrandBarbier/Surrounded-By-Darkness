@@ -56,11 +56,23 @@ public class Movement : MonoBehaviour
             transform.rotation = Quaternion.Euler(0f,  angle, 0f);
 
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
+<<<<<<< Updated upstream
             controller.Move(moveDir.normalized * speed * Time.deltaTime);    
             
             AnimatorPersonnage.SetBool("IsWalking", true);
         }
 
+=======
+            controller.Move(moveDir.normalized * speed * Time.deltaTime);    
+            
+            //AnimatorPersonnage.SetBool("IsWalking", true);
+        }
+
+ 
+        
+      
+        
+>>>>>>> Stashed changes
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
