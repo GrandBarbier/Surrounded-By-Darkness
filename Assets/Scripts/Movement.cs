@@ -61,10 +61,6 @@ public class Movement : MonoBehaviour
             AnimatorPersonnage.SetBool("IsWalking", true);
         }
 
- 
-        
-      
-        
 
         if (Input.GetButtonDown("Jump") && isGrounded)
         {
