@@ -12,13 +12,21 @@
   </component>
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/LightSensor.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/CustomHLSL/CustomLighting.hlsl" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Shaders/CustomHLSL/CustomShadow.hlsl" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/ShaderLibrary/Shadows.hlsl" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Effects/FireLight.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/ShaderLibrary/Lighting.hlsl" root0="FORCE_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/Assets/Scripts/Effects/FireLight.cs" />
         <option value="$PROJECT_DIR$/Assets/Scripts/LightSensor.cs" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/CustomHLSL/CustomLightingTest.hlsl" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/CustomHLSL/CustomLighting.hlsl" />
+        <option value="$PROJECT_DIR$/Assets/Shaders/CustomHLSL/CustomShadow.hlsl" />
+        <option value="$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@11.0.0/ShaderLibrary/Lighting.hlsl" />
       </list>
     </option>
   </component>
@@ -72,6 +80,10 @@
       <updated>1621502292543</updated>
       <workItem from="1621502307309" duration="2377000" />
       <workItem from="1621602879293" duration="2780000" />
+      <workItem from="1621868420365" duration="3458000" />
+      <workItem from="1621930197077" duration="15687000" />
+      <workItem from="1621958836825" duration="1257000" />
+      <workItem from="1622016023819" duration="1527000" />
     </task>
     <servers />
   </component>
@@ -92,5 +104,16 @@
         </entry>
       </map>
     </option>
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="-9" y="-11" width="1707" height="1028" key="dock-window-1" timestamp="1622017145152">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2078" y="-22" width="1709" height="1028" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1621955888186" />
+    <state x="-9" y="-11" width="1707" height="1028" key="dock-window-1/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1622017145152" />
+    <state x="2536" y="173" width="670" height="676" key="search.everywhere.popup" timestamp="1621939673583">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2536" y="173" width="670" height="676" key="search.everywhere.popup/1920.0.1920.1040/0.0.1920.1040@1920.0.1920.1040" timestamp="1621939673583" />
   </component>
 </project>
