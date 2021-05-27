@@ -56,6 +56,10 @@ public class MenuManager : MonoBehaviour
     
     public Button backButton;
 
+    [Header("MainMenuButtons")] 
+    public Button playButton;
+    public Button quitButton;
+
     private List<GameObject> allPanels;
 
     void Awake()
@@ -79,10 +83,10 @@ public class MenuManager : MonoBehaviour
                 new Vector2Int(0, 0)), CreatePanelMap(savePanel),
             //new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
             new PanelMap("RebindingMap", new [,] {
-                {backButton.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
-                {backButton.GetComponent<RectTransform>(), resetInteractKeyboard, resetMoveKeyboard, resetJumpKeyboard, resetPoseTorchKeyboard}, 
-                {backButton.GetComponent<RectTransform>(), rebindingInteractController, rebindingMoveController, rebindingJumpController, rebindingPoseTorchController}, 
-                {backButton.GetComponent<RectTransform>(), resetInteractController, resetMoveController, resetJumpController, resetPoseTorchController}}, new Vector2Int(0, 0))
+                {backButton?.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
+                {backButton?.GetComponent<RectTransform>(), resetInteractKeyboard, resetMoveKeyboard, resetJumpKeyboard, resetPoseTorchKeyboard}, 
+                {backButton?.GetComponent<RectTransform>(), rebindingInteractController, rebindingMoveController, rebindingJumpController, rebindingPoseTorchController}, 
+                {backButton?.GetComponent<RectTransform>(), resetInteractController, resetMoveController, resetJumpController, resetPoseTorchController}}, new Vector2Int(0, 0))
         };
 
         resumeButton?.onClick.AddListener(Menu);
