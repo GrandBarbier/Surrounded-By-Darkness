@@ -1,8 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
-public static class LevelManager
+public class LevelManager
 {
    public static IEnumerator FadeDuration(Color start, Color end, float duration)
    {
@@ -17,5 +18,11 @@ public static class LevelManager
       }
       
       Gears.gears.blackPanel.color = end;
+   }
+
+   public static void LoadScene(int index)
+   {
+      SceneManager.LoadScene(index);
+      Gears.gears.StartCoroutine(FadeDuration(start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
    }
 }
