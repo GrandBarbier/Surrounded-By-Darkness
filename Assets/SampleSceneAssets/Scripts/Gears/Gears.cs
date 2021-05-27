@@ -10,7 +10,7 @@ public class Gears : MonoBehaviour
 
     public PlayerInput playerInput;
 
-    public InputManager InputManager;
+    //public InputManager InputManager;
 
     public Image blackPanel;
 
