@@ -24,8 +24,12 @@ public class Movement : MonoBehaviour
     public float gravity = -9;
     private Vector3 velocity;
     public float jumpHeight = 3.0f;
-   
 
+    void Awake()
+    {
+        Gears.gears.playerInput.actions["Jump"].performed += context => Jump();
+    }
+    
     // Start is called before the first frame update
     void Start()
     {
@@ -44,9 +48,10 @@ public class Movement : MonoBehaviour
         }
         
         
-        float horizontal = Input.GetAxisRaw("Horizontal");
-        float vertical = Input.GetAxisRaw("Vertical");
-        Vector3 direction = new Vector3(horizontal, 0f, vertical).normalized;
+        //float horizontal = Input.GetAxisRaw("Horizontal");
+        //float vertical = Input.GetAxisRaw("Vertical");
+        Vector2 v = Gears.gears.playerInput.actions["Move"].ReadValue<Vector2>();
+        Vector3 direction = new Vector3(v.x, 0, v.y);//new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f)
         {
@@ -59,16 +64,19 @@ public class Movement : MonoBehaviour
             
         }
 
-        if (Input.GetButtonDown("Jump") && isGrounded)
-        {
-            Debug.Log("jump!");
-            velocity.y = Mathf.Sqrt(jumpHeight * gravity);
-        }
-
         velocity.y -= gravity * Time.deltaTime;
 
         controller.Move(velocity * Time.deltaTime);
 
+    }
+
+    public void Jump()
+    {
+        if (isGrounded)
+        {
+            Debug.Log("jump!");
+            velocity.y = Mathf.Sqrt(jumpHeight * gravity);
+        }
     }
 }
 
