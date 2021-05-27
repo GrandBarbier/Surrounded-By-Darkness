@@ -25,15 +25,13 @@ public class Movement : MonoBehaviour
     private Vector3 velocity;
     public float jumpHeight = 3.0f;
 
-    void Awake()
-    {
-        Gears.gears.playerInput.actions["Jump"].performed += context => Jump();
-    }
-    
+    public Transform cameraFollowTranfom;
+    public float sensibility;
+
     // Start is called before the first frame update
     void Start()
     {
-        
+        Gears.gears.playerInput.actions["Jump"].performed += context => Jump();
     }
 
     // Update is called once per frame
@@ -76,6 +74,29 @@ public class Movement : MonoBehaviour
         {
             Debug.Log("jump!");
             velocity.y = Mathf.Sqrt(jumpHeight * gravity);
+        }
+    }
+
+    public void RotateCamera()
+    {
+        Vector2 v = Gears.gears.playerInput.actions["CameraMove"].ReadValue<Vector2>();
+        cameraFollowTranfom.rotation *= Quaternion.AngleAxis(v.x * sensibility, Vector3.up);
+        
+        cameraFollowTranfom.rotation *= Quaternion.AngleAxis(v.y * sensibility, Vector3.right);
+
+        var angles = cameraFollowTranfom.localEulerAngles;
+
+        angles.z = 0;
+
+        var angle = cameraFollowTranfom.localEulerAngles.x;
+        
+        //Clamp rotation
+        if (angle > 180 && angle < 340)
+        {
+            angles.x = 340;
+        }else if (angle < 180 && angle < 40)
+        {
+            angles.x = 40;
         }
     }
 }

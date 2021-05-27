@@ -33,7 +33,10 @@ public class Gears : MonoBehaviour
     
     void Start()
     {
-        StartCoroutine(LevelManager.FadeDuration(start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
+        if (blackPanel)
+        {
+            StartCoroutine(LevelManager.FadeDuration(start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
+        }
     }
     
     void Update()

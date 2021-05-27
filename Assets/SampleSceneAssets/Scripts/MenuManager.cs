@@ -30,20 +30,25 @@ public class MenuManager : MonoBehaviour
     public Button languagesButton;
 
     [Header("RebindingButtons")] 
-    public Button rebindingInteractKeyboard;
-    public Button resetInteractKeyboard;
-    public Button rebindingInteractController;
-    public Button resetInteractController;
+    public RectTransform rebindingInteractKeyboard;
+    public RectTransform resetInteractKeyboard;
+    public RectTransform rebindingInteractController;
+    public RectTransform resetInteractController;
 
-    public Button rebindingMoveKeyboard;
-    public Button resetMoveKeyboard;
-    public Button rebindingMoveController;
-    public Button resetMoveController;
+    public RectTransform rebindingMoveKeyboard;
+    public RectTransform resetMoveKeyboard;
+    public RectTransform rebindingMoveController;
+    public RectTransform resetMoveController;
     
-    public Button rebindingJumpKeyboard;
-    public Button resetJumpKeyboard;
-    public Button rebindingJumpController;
-    public Button resetJumpController;
+    public RectTransform rebindingJumpKeyboard;
+    public RectTransform resetJumpKeyboard;
+    public RectTransform rebindingJumpController;
+    public RectTransform resetJumpController;
+    
+    public RectTransform rebindingPoseTorchKeyboard;
+    public RectTransform resetPoseTorchKeyboard;
+    public RectTransform rebindingPoseTorchController;
+    public RectTransform resetPoseTorchController;
 
     [Header("Language Buttons")]
     public Button englishButton;
@@ -73,14 +78,11 @@ public class MenuManager : MonoBehaviour
                     backButton.GetComponent<RectTransform>()}}, 
                 new Vector2Int(0, 0)), CreatePanelMap(savePanel),
             //new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
-            new PanelMap("RebindingMap", new [,] {{backButton.GetComponent<RectTransform>(), rebindingInteractKeyboard.GetComponent<RectTransform>(), 
-                    rebindingMoveKeyboard.GetComponent<RectTransform>(), rebindingJumpKeyboard.GetComponent<RectTransform>()}, 
-                {backButton.GetComponent<RectTransform>(), resetInteractKeyboard.GetComponent<RectTransform>(),
-                    resetMoveKeyboard.GetComponent<RectTransform>(), resetJumpKeyboard.GetComponent<RectTransform>()}, 
-                {backButton.GetComponent<RectTransform>(), rebindingInteractController.GetComponent<RectTransform>(), 
-                    rebindingMoveController.GetComponent<RectTransform>(), rebindingJumpController.GetComponent<RectTransform>()}, 
-                {backButton.GetComponent<RectTransform>(), resetInteractController.GetComponent<RectTransform>(), resetMoveController.GetComponent<RectTransform>(), 
-                    resetJumpController.GetComponent<RectTransform>()}}, new Vector2Int(0, 0))
+            new PanelMap("RebindingMap", new [,] {
+                {backButton.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
+                {backButton.GetComponent<RectTransform>(), resetInteractKeyboard, resetMoveKeyboard, resetJumpKeyboard, resetPoseTorchKeyboard}, 
+                {backButton.GetComponent<RectTransform>(), rebindingInteractController, rebindingMoveController, rebindingJumpController, rebindingPoseTorchController}, 
+                {backButton.GetComponent<RectTransform>(), resetInteractController, resetMoveController, resetJumpController, resetPoseTorchController}}, new Vector2Int(0, 0))
         };
 
         resumeButton?.onClick.AddListener(Menu);
