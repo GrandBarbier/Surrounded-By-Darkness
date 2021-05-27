@@ -114,6 +114,9 @@ public class MenuManager : MonoBehaviour
         englishButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(englishButton)));
         frenchButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.French));
         frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
+        
+        playButton?.onClick.AddListener(() => LevelManager.LoadScene(1));
+        quitButton?.onClick.AddListener(() => Application.Quit());
     }
 
     void Update()

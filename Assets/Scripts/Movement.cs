@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 public class Movement : MonoBehaviour
 {
@@ -28,10 +29,13 @@ public class Movement : MonoBehaviour
     public Transform cameraFollowTranfom;
     public float sensibility;
 
+    private PlayerInput playerInput;
+
     // Start is called before the first frame update
     void Start()
     {
-        Gears.gears.playerInput.actions["Jump"].performed += context => Jump();
+        playerInput = GetComponent<PlayerInput>();
+        playerInput.actions["Jump"].performed += context => Jump();
     }
 
     // Update is called once per frame
@@ -48,7 +52,7 @@ public class Movement : MonoBehaviour
         
         //float horizontal = Input.GetAxisRaw("Horizontal");
         //float vertical = Input.GetAxisRaw("Vertical");
-        Vector2 v = Gears.gears.playerInput.actions["Move"].ReadValue<Vector2>();
+        Vector2 v = playerInput.actions["Move"].ReadValue<Vector2>();
         Vector3 direction = new Vector3(v.x, 0, v.y);//new Vector3(horizontal, 0f, vertical).normalized;
 
         if (direction.magnitude >= 0.1f)
@@ -79,7 +83,7 @@ public class Movement : MonoBehaviour
 
     public void RotateCamera()
     {
-        Vector2 v = Gears.gears.playerInput.actions["CameraMove"].ReadValue<Vector2>();
+        Vector2 v = playerInput.actions["CameraMove"].ReadValue<Vector2>();
         cameraFollowTranfom.rotation *= Quaternion.AngleAxis(v.x * sensibility, Vector3.up);
         
         cameraFollowTranfom.rotation *= Quaternion.AngleAxis(v.y * sensibility, Vector3.right);
