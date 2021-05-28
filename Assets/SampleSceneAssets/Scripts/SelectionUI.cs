@@ -118,6 +118,16 @@ public class SelectionUI : MonoBehaviour
             MoveMapPosition(vector2I);
         }
     }
+    
+    public void ScaleSelection()
+    {
+        _rectTransform.position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
+        _rectTransform.sizeDelta = menuManager.currentMap.map[posOnMap.x, posOnMap.y].sizeDelta;
+        
+        Vector3 v = AdaptScale(menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject, menuManager.currentMap.map[posOnMap.x, posOnMap.y].localScale);
+        _rectTransform.localScale = new Vector3(v.x * scaleMultiplierX, v.y * scaleMultiplierY);
+        //Debug.Log(vector2Int + " -> " + posOnMap);
+    }
 
     public Vector3 AdaptScale(GameObject go, Vector3 scale)
     {
@@ -132,15 +142,5 @@ public class SelectionUI : MonoBehaviour
             //Debug.Log($"finale scale : {scale}");
             return scale;
         }
-    }
-
-    public void ScaleSelection()
-    {
-        _rectTransform.position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
-        _rectTransform.sizeDelta = menuManager.currentMap.map[posOnMap.x, posOnMap.y].sizeDelta;
-
-        Vector3 v = AdaptScale(menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject, menuManager.currentMap.map[posOnMap.x, posOnMap.y].localScale);
-        _rectTransform.localScale = new Vector3(v.x * scaleMultiplierX, v.y * scaleMultiplierY);
-        //Debug.Log(vector2Int + " -> " + posOnMap);
     }
 }
