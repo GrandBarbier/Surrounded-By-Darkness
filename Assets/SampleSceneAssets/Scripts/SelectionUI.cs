@@ -20,11 +20,13 @@ public class SelectionUI : MonoBehaviour
             new Vector2Int((int) context.ReadValue<Vector2>().x, (int) context.ReadValue<Vector2>().y));
 
         Gears.gears.playerInput.actions["Enter"].performed += context => TriggerSelection();
+        
+        _rectTransform = GetComponent<RectTransform>();
     }
 
     void Start()
     {
-        _rectTransform = GetComponent<RectTransform>();
+        
     }
     
     void Update()
@@ -109,12 +111,7 @@ public class SelectionUI : MonoBehaviour
 
         if (menuManager.currentMap.map[posOnMap.x, posOnMap.y] != null)
         {
-            _rectTransform.position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
-            _rectTransform.sizeDelta = menuManager.currentMap.map[posOnMap.x, posOnMap.y].sizeDelta;
-
-            Vector3 v = AdaptScale(menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject, menuManager.currentMap.map[posOnMap.x, posOnMap.y].localScale);
-            _rectTransform.localScale = new Vector3(v.x * scaleMultiplierX, v.y * scaleMultiplierY);
-            //Debug.Log(vector2Int + " -> " + posOnMap);
+           ScaleSelection();
         }
         else
         {
@@ -135,5 +132,15 @@ public class SelectionUI : MonoBehaviour
             //Debug.Log($"finale scale : {scale}");
             return scale;
         }
+    }
+
+    public void ScaleSelection()
+    {
+        _rectTransform.position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
+        _rectTransform.sizeDelta = menuManager.currentMap.map[posOnMap.x, posOnMap.y].sizeDelta;
+
+        Vector3 v = AdaptScale(menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject, menuManager.currentMap.map[posOnMap.x, posOnMap.y].localScale);
+        _rectTransform.localScale = new Vector3(v.x * scaleMultiplierX, v.y * scaleMultiplierY);
+        //Debug.Log(vector2Int + " -> " + posOnMap);
     }
 }
