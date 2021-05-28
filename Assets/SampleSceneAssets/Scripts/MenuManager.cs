@@ -73,8 +73,8 @@ public class MenuManager : MonoBehaviour
         
         allPanels = new List<Menu>{parametersMenu, mainMenu, inputsMenu, saveMenu, languageMenu};
 
-        PanelMaps = new[] {//CreatePanelMap(mainMenu.panel),
-            new PanelMap("MainMenuMap", new [,] {{playButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), quitButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
+        PanelMaps = new[] { CreatePanelMap(mainMenu.panel, true),
+            //new PanelMap("MainMenuMap", new [,] {{playButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), quitButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
             new PanelMap("PauseMap", 
                 new [, ] {{resumeButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), saveButton?.GetComponent<RectTransform>()}}, 
                 new Vector2Int(0, 0)),
@@ -84,7 +84,7 @@ public class MenuManager : MonoBehaviour
                     backButton.GetComponent<RectTransform>()}}, 
                 new Vector2Int(0, 0)), 
             CreatePanelMap(saveMenu.panel),
-            //new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
+           // new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
             new PanelMap("RebindingMap", new [,] {
                 {backButton?.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
                 {backButton?.GetComponent<RectTransform>(), resetInteractKeyboard, resetMoveKeyboard, resetJumpKeyboard, resetPoseTorchKeyboard}, 
@@ -123,10 +123,8 @@ public class MenuManager : MonoBehaviour
 
     void Start()
     {
-        Debug.Log(pauseMenu);
         if (pauseMenu.panel == null)
         {
-            Debug.Log("go to main menu");
             GoToPanel(mainMenu);
             Gears.gears.playerInput.SwitchCurrentActionMap("Menu");
         }
@@ -218,9 +216,9 @@ public class MenuManager : MonoBehaviour
     
     #endregion
 
-    public PanelMap CreatePanelMap(GameObject panel)
+    public PanelMap CreatePanelMap(GameObject panel, bool noBackButton = false)
     {
-        List<GameObject> allChilds = GetAllChilds(panel);
+        List<GameObject> allChilds = GetAllChilds(panel, true);
         List<RectTransform> recter = new List<RectTransform>();
 
         foreach(var child in allChilds)
@@ -283,7 +281,10 @@ public class MenuManager : MonoBehaviour
         }
         
         //backButton setup
-        lists[0].Insert(0, null);
+        if (!noBackButton)
+        {
+            lists[0].Insert(0, null);
+        }
 
         column = lists.Count;
         int maxLength = 0;
@@ -299,13 +300,16 @@ public class MenuManager : MonoBehaviour
         row = maxLength;
         
         RectTransform [,] rectTransform = new RectTransform[column, row];
-        rectTransform[0, 0] = backButton.GetComponent<RectTransform>();
+        if (!noBackButton)
+        {
+            rectTransform[0, 0] = backButton.GetComponent<RectTransform>();
+        }
 
         for (int i = 0; i < column; i++)
         {
             for (int j = 0; j < row; j++)
             {
-                if (!(i == 0 && j == 0))
+                if (!(i == 0 && j == 0) || noBackButton)
                 {
                     if (j < lists[i].Count)
                     {
@@ -323,23 +327,26 @@ public class MenuManager : MonoBehaviour
         return panelMap;
     }
 
-    public static List<GameObject> GetAllChilds(GameObject go)
+    public static List<GameObject> GetAllChilds(GameObject go, bool activeChildsOnly = false)
     {
         List<GameObject> allChilds = new List<GameObject>();
 
         for (int i = 0; i < go.transform.childCount; i++)
         {
-            allChilds.Add(go.transform.GetChild(i).gameObject);
-
-            if (go.transform.GetChild(i).childCount > 0)
+            if (!activeChildsOnly || go.transform.GetChild(i).gameObject.activeSelf)
             {
-                List<GameObject> g = GetAllChilds(go.transform.GetChild(i).gameObject);
+                allChilds.Add(go.transform.GetChild(i).gameObject);
 
-                foreach (var gj in g)
+                if (go.transform.GetChild(i).childCount > 0)
                 {
-                    if (!allChilds.Contains(gj))
+                    List<GameObject> g = GetAllChilds(go.transform.GetChild(i).gameObject);
+
+                    foreach (var gj in g)
                     {
-                        allChilds.Add(gj);
+                        if (!allChilds.Contains(gj))
+                        {
+                            allChilds.Add(gj);
+                        }
                     }
                 }
             }
