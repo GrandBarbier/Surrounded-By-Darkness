@@ -12,15 +12,16 @@ public class MenuManager : MonoBehaviour
     public SelectionUI selection;
 
     [NonSerialized] public PanelMap currentMap;
-    
-    [Header("Panels")]
-    public GameObject menuPanel;
-    private bool menu;
 
-    public GameObject parametersPanel;
-    public GameObject inputsPanel;
-    public GameObject savePanel;
-    public GameObject languagePanel;
+    [Header("Menus")] 
+    public Menu pauseMenu;
+    private bool pause;
+
+    public Menu mainMenu;
+    public Menu parametersMenu;
+    public Menu inputsMenu;
+    public Menu saveMenu;
+    public Menu languageMenu;
 
     [Header("MenuButtons")]
     public Button resumeButton;
@@ -28,6 +29,9 @@ public class MenuManager : MonoBehaviour
     public Button saveButton;
     public Button inputsButton;
     public Button languagesButton;
+    public Button mainMenuButton;
+    
+    public Button backButton;
 
     [Header("RebindingButtons")] 
     public RectTransform rebindingInteractKeyboard;
@@ -53,34 +57,33 @@ public class MenuManager : MonoBehaviour
     [Header("Language Buttons")]
     public Button englishButton;
     public Button frenchButton;
-    
-    public Button backButton;
 
     [Header("MainMenuButtons")] 
     public Button playButton;
     public Button quitButton;
 
-    private List<GameObject> allPanels;
+    private List<Menu> allPanels;
+
+    //public UnityEvent[] Events;
 
     void Awake()
     {
-        //Gears.gears.playerInput.actions["Interact"].performed += context => Debug.Log("Interaction");
-        Gears.gears.playerInput.actions["Escape"].performed += context => Menu();
-        Gears.gears.playerInput.actions["EscapeMenu"].performed += context => Menu();
-    }
+        Gears.gears.playerInput.actions["Escape"].performed += context => Pause();
+        Gears.gears.playerInput.actions["EscapeMenu"].performed += context => Pause();
+        
+        allPanels = new List<Menu>{parametersMenu, mainMenu, inputsMenu, saveMenu, languageMenu};
 
-    void Start()
-    {
-        allPanels = new List<GameObject>{parametersPanel, menuPanel, inputsPanel, savePanel, languagePanel};
-
-        PanelMaps = new[] {new PanelMap("PauseMap", 
-            new [, ] {{resumeButton.GetComponent<RectTransform>(), parameterButton.GetComponent<RectTransform>(), saveButton.GetComponent<RectTransform>()}}, 
-            new Vector2Int(0, 0)),  
-            new PanelMap("ParameterMap", new [,] {{backButton.GetComponent<RectTransform>(), languagesButton.GetComponent<RectTransform>(), 
-                    inputsButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
-            new PanelMap("LanguageMap", new [,] {{englishButton.GetComponent<RectTransform>(), frenchButton.GetComponent<RectTransform>(), 
+        PanelMaps = new[] {//CreatePanelMap(mainMenu.panel),
+            new PanelMap("MainMenuMap", new [,] {{playButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), quitButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
+            new PanelMap("PauseMap", 
+                new [, ] {{resumeButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), saveButton?.GetComponent<RectTransform>()}}, 
+                new Vector2Int(0, 0)),
+            new PanelMap("ParameterMap", new [,] {{backButton.GetComponent<RectTransform>(), languagesButton?.GetComponent<RectTransform>(), 
+                inputsButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
+            new PanelMap("LanguageMap", new [,] {{englishButton?.GetComponent<RectTransform>(), frenchButton?.GetComponent<RectTransform>(), 
                     backButton.GetComponent<RectTransform>()}}, 
-                new Vector2Int(0, 0)), CreatePanelMap(savePanel),
+                new Vector2Int(0, 0)), 
+            CreatePanelMap(saveMenu.panel),
             //new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
             new PanelMap("RebindingMap", new [,] {
                 {backButton?.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
@@ -88,26 +91,24 @@ public class MenuManager : MonoBehaviour
                 {backButton?.GetComponent<RectTransform>(), rebindingInteractController, rebindingMoveController, rebindingJumpController, rebindingPoseTorchController}, 
                 {backButton?.GetComponent<RectTransform>(), resetInteractController, resetMoveController, resetJumpController, resetPoseTorchController}}, new Vector2Int(0, 0))
         };
-
-        resumeButton?.onClick.AddListener(Menu);
+        
+        resumeButton?.onClick.AddListener(Pause);
         
         //Go to parameter panel when you click parameter button
-        parameterButton?.onClick.AddListener(() => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
-            () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[1]));
+        parameterButton?.onClick.AddListener(() => GoToPanel(parametersMenu, parameterButton.transform.parent.gameObject, () => GoToPanel(mainMenu)));
         
         //Go to save panel when you click save button
-        saveButton?.onClick.AddListener(() => GoToPanel(savePanel, saveButton.transform.parent.gameObject, 
-            () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[3]));
+        saveButton?.onClick.AddListener(() => GoToPanel(saveMenu, saveButton.transform.parent.gameObject, () => GoToPanel(mainMenu)));
         
         //Go to Inputs panel when you click inputs button and setup the back button to go back to parameter panel
-        inputsButton?.onClick.AddListener(() => GoToPanel(inputsPanel, inputsButton.transform.parent.gameObject, 
-            () => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
-                () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[1]), PanelMaps[4]));
+        inputsButton?.onClick.AddListener(() => GoToPanel(inputsMenu, inputsButton.transform.parent.gameObject, 
+            () => GoToPanel(parametersMenu, parameterButton.transform.parent.gameObject, () => GoToPanel(mainMenu))));
         
         //Go to language panel when you click language button and setup the back button to go back to parameter panel
-        languagesButton?.onClick.AddListener(() => GoToPanel(languagePanel, languagePanel.transform.parent.gameObject, 
-            () => GoToPanel(parametersPanel, parameterButton.transform.parent.gameObject, 
-                () => GoToPanel(menuPanel, null, null, PanelMaps[0], false), PanelMaps[1]), PanelMaps[2]));
+        languagesButton?.onClick.AddListener(() => GoToPanel(languageMenu, languagesButton.transform.parent.gameObject, 
+            () => GoToPanel(parametersMenu, parameterButton.transform.parent.gameObject, () => GoToPanel(mainMenu))));
+        
+        mainMenuButton?.onClick.AddListener(() => LevelManager.LoadScene(0));
         
         //Change language when you click languages buttons
         englishButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.English));
@@ -116,7 +117,19 @@ public class MenuManager : MonoBehaviour
         frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
         
         playButton?.onClick.AddListener(() => LevelManager.LoadScene(1));
+        playButton?.onClick.AddListener(() => Gears.gears.playerInput.SwitchCurrentActionMap("Gameplay"));
         quitButton?.onClick.AddListener(() => Application.Quit());
+    }
+
+    void Start()
+    {
+        Debug.Log(pauseMenu);
+        if (pauseMenu.panel == null)
+        {
+            Debug.Log("go to main menu");
+            GoToPanel(mainMenu);
+            Gears.gears.playerInput.SwitchCurrentActionMap("Menu");
+        }
     }
 
     void Update()
@@ -124,51 +137,59 @@ public class MenuManager : MonoBehaviour
         
     }
 
-    #region MenFunc
+    #region MenuFunc
 
-    public void Menu()
+    public void Pause()
     {
-        if (menu)
+        if (pause)
         {
             HideAllPanel();
             Gears.gears.playerInput.SwitchCurrentActionMap("Gameplay");
+            Time.timeScale = 1f;
         }
         else
         {
-            GoToPanel(menuPanel, null, null, PanelMaps[0], false);
+            GoToPanel(pauseMenu);
             Gears.gears.playerInput.SwitchCurrentActionMap("Menu");
+            Time.timeScale = 0f;
         }
 
-        menu = !menu;
+        pause = !pause;
     }
 
-    public void GoToPanel(GameObject panelToGo, GameObject panelToGoBackButton, UnityAction backButtonAction, PanelMap panelMap = null, bool enableBackButton = true)
+    public void GoToPanel(Menu panelToGo, GameObject panelToGoBackButton = null, UnityAction backButtonAction = null, PanelMap panelMap = null)
     { 
         HideAllPanel();
         
-        panelToGo.SetActive(true);
-        selection.transform.SetParent(panelToGo.transform);
+        panelToGo.panel.SetActive(true);
+        selection.transform.SetParent(panelToGo.panel.transform);
         selection.transform.SetAsFirstSibling();
 
-        if (enableBackButton)
+        if (panelToGoBackButton)
         {
-            SetBackButton(panelToGoBackButton, panelToGo, () => backButton.onClick.AddListener(backButtonAction));
+            SetBackButton(panelToGoBackButton, panelToGo.panel, () => backButton.onClick.AddListener(backButtonAction));
         }
 
         if (panelMap != null)
         {
             currentMap = panelMap;
-            selection.GetComponent<RectTransform>().position = panelMap.map[panelMap.startPos.x, panelMap.startPos.y].position;
-            selection.posOnMap = currentMap.startPos;
-            //Debug.Log(panelMap.mapName);
         }
+        else
+        {
+            currentMap = PanelMaps[panelToGo.panelMapIndex];
+        }
+        
+        selection.GetComponent<RectTransform>().position = currentMap.map[currentMap.startPos.x, currentMap.startPos.y].position;
+        selection.posOnMap = currentMap.startPos;
+        selection.ScaleSelection();
+        //Debug.Log(panelMap.mapName);
     }
 
     public void HideAllPanel()
     {
         foreach (var panel in allPanels)
         {
-            panel.SetActive(false);
+            panel.panel.SetActive(false);
         }
     }
 
@@ -342,4 +363,16 @@ public class PanelMap
     public RectTransform[,] map;
 
     public Vector2Int startPos;
+}
+
+[Serializable]
+public class Menu
+{
+    public Menu()
+    {
+        
+    }
+
+    public int panelMapIndex;
+    public GameObject panel;
 }
