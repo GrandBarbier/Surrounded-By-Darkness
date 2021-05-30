@@ -70,26 +70,24 @@ public class MenuManager : MonoBehaviour
     {
         Gears.gears.playerInput.actions["Escape"].performed += context => Pause();
         Gears.gears.playerInput.actions["EscapeMenu"].performed += context => Pause();
-        
+
         allPanels = new List<Menu>{parametersMenu, mainMenu, inputsMenu, saveMenu, languageMenu};
 
         PanelMaps = new[] { CreatePanelMap(mainMenu.panel, true),
             //new PanelMap("MainMenuMap", new [,] {{playButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), quitButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
-            new PanelMap("PauseMap", 
-                new [, ] {{resumeButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), saveButton?.GetComponent<RectTransform>()}}, 
-                new Vector2Int(0, 0)),
-            new PanelMap("ParameterMap", new [,] {{backButton.GetComponent<RectTransform>(), languagesButton?.GetComponent<RectTransform>(), 
-                inputsButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
-            new PanelMap("LanguageMap", new [,] {{englishButton?.GetComponent<RectTransform>(), frenchButton?.GetComponent<RectTransform>(), 
-                    backButton.GetComponent<RectTransform>()}}, 
-                new Vector2Int(0, 0)), 
+            new PanelMap(new [, ] {{resumeButton?.GetComponent<RectTransform>(), parameterButton?.GetComponent<RectTransform>(), saveButton?.GetComponent<RectTransform>()}}, 
+                new Vector2Int(0, 0), "PauseMap"),
+            new PanelMap(new [,] {{backButton.GetComponent<RectTransform>(), languagesButton?.GetComponent<RectTransform>(), 
+                inputsButton?.GetComponent<RectTransform>()}}, new Vector2Int(0, 0), "ParameterMap"), 
+            new PanelMap(new [,] {{englishButton?.GetComponent<RectTransform>(), frenchButton?.GetComponent<RectTransform>(), 
+                    backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0), "LanguageMap"), 
             CreatePanelMap(saveMenu.panel),
-           // new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
-            new PanelMap("RebindingMap", new [,] {
-                {backButton?.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
+           //new PanelMap("SaveMap", new [,] {{backButton.GetComponent<RectTransform>()}}, new Vector2Int(0, 0)), 
+            new PanelMap(new [,] {{backButton?.GetComponent<RectTransform>(), rebindingInteractKeyboard, rebindingMoveKeyboard, rebindingJumpKeyboard, rebindingPoseTorchKeyboard}, 
                 {backButton?.GetComponent<RectTransform>(), resetInteractKeyboard, resetMoveKeyboard, resetJumpKeyboard, resetPoseTorchKeyboard}, 
                 {backButton?.GetComponent<RectTransform>(), rebindingInteractController, rebindingMoveController, rebindingJumpController, rebindingPoseTorchController}, 
-                {backButton?.GetComponent<RectTransform>(), resetInteractController, resetMoveController, resetJumpController, resetPoseTorchController}}, new Vector2Int(0, 0))
+                {backButton?.GetComponent<RectTransform>(), resetInteractController, resetMoveController, resetJumpController, resetPoseTorchController}}, new Vector2Int(0, 0)
+                , "RebindingMap")
         };
         
         resumeButton?.onClick.AddListener(Pause);
@@ -155,17 +153,17 @@ public class MenuManager : MonoBehaviour
         pause = !pause;
     }
 
-    public void GoToPanel(Menu panelToGo, GameObject panelToGoBackButton = null, UnityAction backButtonAction = null, PanelMap panelMap = null)
+    public void GoToPanel(Menu menuToGo, GameObject panelToGoBackButton = null, UnityAction backButtonAction = null, PanelMap panelMap = null)
     { 
         HideAllPanel();
         
-        panelToGo.panel.SetActive(true);
-        selection.transform.SetParent(panelToGo.panel.transform);
+        menuToGo.panel.SetActive(true);
+        selection.transform.SetParent(menuToGo.panel.transform);
         selection.transform.SetAsFirstSibling();
 
         if (panelToGoBackButton)
         {
-            SetBackButton(panelToGoBackButton, panelToGo.panel, () => backButton.onClick.AddListener(backButtonAction));
+            SetBackButton(panelToGoBackButton, menuToGo.panel, () => backButton.onClick.AddListener(backButtonAction));
         }
 
         if (panelMap != null)
@@ -174,7 +172,8 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
-            currentMap = PanelMaps[panelToGo.panelMapIndex];
+            //currentMap = PanelMaps[menuToGo.panelMapIndex];
+            currentMap = ConvertListToPanelMap(menuToGo.menuMap);
         }
         
         selection.GetComponent<RectTransform>().position = currentMap.map[currentMap.startPos.x, currentMap.startPos.y].position;
@@ -215,6 +214,35 @@ public class MenuManager : MonoBehaviour
     }
     
     #endregion
+
+    public PanelMap ConvertListToPanelMap(List<Column<RectTransform>> lists)
+    {
+        int maxLength = 0;
+
+        foreach (var column in lists)
+        {
+            if (column.list.Count > maxLength)
+            {
+                maxLength = column.list.Count;
+            }
+        }
+        
+        RectTransform[,] rectTransforms = new RectTransform[lists.Count, maxLength];
+        
+        for (int i = 0; i < lists.Count; i++)
+        {
+            for (int j = 0; j < lists[i].list.Count; j++)
+            {
+                if (j < lists[i].list.Count)
+                {
+                    rectTransforms[i, j] = lists[i].list[j];
+                }
+            }
+        }
+        
+        PanelMap panelMap = new PanelMap(rectTransforms, Vector2Int.zero);
+        return panelMap;
+    }
 
     public PanelMap CreatePanelMap(GameObject panel, bool noBackButton = false)
     {
@@ -323,7 +351,7 @@ public class MenuManager : MonoBehaviour
             }
         }
 
-        PanelMap panelMap = new PanelMap(panel.name, rectTransform, new Vector2Int(0, 0));
+        PanelMap panelMap = new PanelMap(rectTransform, new Vector2Int(0, 0), panel.name);
         return panelMap;
     }
 
@@ -358,7 +386,7 @@ public class MenuManager : MonoBehaviour
 
 public class PanelMap
 {
-    public PanelMap(string mapName, RectTransform[,] map, Vector2Int startPos)
+    public PanelMap(RectTransform[,] map, Vector2Int startPos, string mapName = null)
     {
         this.mapName = mapName;
         this.map = map;
@@ -375,11 +403,19 @@ public class PanelMap
 [Serializable]
 public class Menu
 {
-    public Menu()
+    public Menu(GameObject panel, int panelMapIndex)
     {
-        
+        this.panel = panel;
+        this.panelMapIndex = panelMapIndex;
     }
 
     public int panelMapIndex;
     public GameObject panel;
+    public List<Column<RectTransform>> menuMap = new List<Column<RectTransform>>();
+}
+
+[Serializable]
+public class Column<T>
+{
+    public List<T> list;
 }

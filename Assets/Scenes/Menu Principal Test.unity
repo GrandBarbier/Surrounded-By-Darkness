@@ -291,7 +291,7 @@ RectTransform:
   - {fileID: 1798291875}
   - {fileID: 1963286822}
   m_Father: {fileID: 1179053480}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2832,8 +2832,8 @@ RectTransform:
   m_Children:
   - {fileID: 1462368396}
   - {fileID: 2077250672}
-  - {fileID: 1274059131}
   - {fileID: 41562341}
+  - {fileID: 1274059131}
   - {fileID: 1501152917}
   - {fileID: 2013758205}
   - {fileID: 449633881}
@@ -2861,21 +2861,67 @@ MonoBehaviour:
   pauseMenu:
     panelMapIndex: 0
     panel: {fileID: 0}
+    menuMap: []
   mainMenu:
     panelMapIndex: 0
     panel: {fileID: 41562340}
+    menuMap:
+    - list:
+      - {fileID: 215448541}
+      - {fileID: 1798291875}
+      - {fileID: 1963286822}
   parametersMenu:
     panelMapIndex: 2
     panel: {fileID: 1501152916}
+    menuMap:
+    - list:
+      - {fileID: 1462368396}
+      - {fileID: 1525636151}
+      - {fileID: 1850905340}
+      - {fileID: 788321535}
   inputsMenu:
     panelMapIndex: 5
     panel: {fileID: 2013758204}
+    menuMap:
+    - list:
+      - {fileID: 1462368396}
+      - {fileID: 1626708299}
+      - {fileID: 832169797}
+      - {fileID: 1965874628}
+      - {fileID: 1407076585}
+    - list:
+      - {fileID: 1626708298}
+      - {fileID: 930715627}
+      - {fileID: 1965874627}
+      - {fileID: 1407076584}
+    - list:
+      - {fileID: 2074453458}
+      - {fileID: 1470075649}
+      - {fileID: 2122585370}
+      - {fileID: 1662405425}
+    - list:
+      - {fileID: 2074453457}
+      - {fileID: 1470075648}
+      - {fileID: 2122585369}
+      - {fileID: 1662405424}
   saveMenu:
     panelMapIndex: 4
     panel: {fileID: 1274059130}
+    menuMap:
+    - list:
+      - {fileID: 1462368396}
+      - {fileID: 871400147}
+    - list:
+      - {fileID: 132720881}
+      - {fileID: 840716036}
   languageMenu:
     panelMapIndex: 1
     panel: {fileID: 449633880}
+    menuMap:
+    - list:
+      - {fileID: 1462368396}
+      - {fileID: 1060107093}
+      - {fileID: 2032058484}
   resumeButton: {fileID: 0}
   parameterButton: {fileID: 1798291876}
   saveButton: {fileID: 788321536}
@@ -3075,7 +3121,7 @@ RectTransform:
   - {fileID: 132720881}
   - {fileID: 840716036}
   m_Father: {fileID: 1179053480}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
