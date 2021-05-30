@@ -109,7 +109,7 @@ public class SelectionUI : MonoBehaviour
             posOnMap.y = 0;
         }
 
-        if (menuManager.currentMap.map[posOnMap.x, posOnMap.y] != null)
+        if (menuManager.currentMap.map[posOnMap.x, posOnMap.y] != null && menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject.activeSelf)
         {
            ScaleSelection();
         }
