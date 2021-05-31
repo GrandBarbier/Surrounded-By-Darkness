@@ -8,6 +8,7 @@ public class Movement : MonoBehaviour
 {
     public CharacterController controller;
     public Transform cam;
+    public Animator animator;
 
     public float speed = 6f;
 
@@ -64,6 +65,12 @@ public class Movement : MonoBehaviour
             Vector3 moveDir = Quaternion.Euler(0f, targetAngle, 0f) * Vector3.forward;
             controller.Move(moveDir.normalized * speed * Time.deltaTime);
             
+            animator.SetBool("IsWalking", true);
+            
+        }
+        else
+        {
+            animator.SetBool("IsWalking", false);
         }
 
         velocity.y -= gravity * Time.deltaTime;
