@@ -5045,8 +5045,8 @@ RectTransform:
   m_LocalScale: {x: 1.1, y: 1.1, z: 1}
   m_Children:
   - {fileID: 2093214141}
-  - {fileID: 1676783292}
   - {fileID: 1633596043}
+  - {fileID: 1676783292}
   m_Father: {fileID: 1687405325}
   m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -7085,6 +7085,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 6680292650503350825, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
   m_PrefabInstance: {fileID: 1459715017}
   m_PrefabAsset: {fileID: 0}
+--- !u!224 &1459715019 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4144614242073959112, guid: f25dcd618d3acd64795bf8bb32edb6c9, type: 3}
+  m_PrefabInstance: {fileID: 1459715017}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1495831796
 GameObject:
   m_ObjectHideFlags: 0
@@ -8658,7 +8663,7 @@ RectTransform:
   m_Children:
   - {fileID: 72803818}
   m_Father: {fileID: 1033804600}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8779,7 +8784,7 @@ RectTransform:
   m_Children:
   - {fileID: 1306854448}
   m_Father: {fileID: 1033804600}
-  m_RootOrder: 1
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -8924,17 +8929,89 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selection: {fileID: 1286512335}
-  menuPanel: {fileID: 732933647}
-  parametersPanel: {fileID: 1033804599}
-  inputsPanel: {fileID: 58697119}
-  savePanel: {fileID: 1916612187}
-  languagePanel: {fileID: 1725665746}
+  pauseMenu:
+    panelMapIndex: 1
+    panel: {fileID: 732933647}
+    useBackButton: 0
+    menuBackButtonIndex: 0
+    menuMap:
+    - list:
+      - {fileID: 1417691429}
+      - {fileID: 1495831797}
+      - {fileID: 1314062908}
+      - {fileID: 1571132177}
+  mainMenu:
+    panelMapIndex: 0
+    panel: {fileID: 0}
+    useBackButton: 0
+    menuBackButtonIndex: 0
+    menuMap: []
+  parametersMenu:
+    panelMapIndex: 2
+    panel: {fileID: 1033804599}
+    useBackButton: 1
+    menuBackButtonIndex: 1
+    menuMap:
+    - list:
+      - {fileID: 213339031}
+      - {fileID: 1633596043}
+      - {fileID: 1676783292}
+  inputsMenu:
+    panelMapIndex: 5
+    panel: {fileID: 58697119}
+    useBackButton: 1
+    menuBackButtonIndex: 2
+    menuMap:
+    - list:
+      - {fileID: 213339031}
+      - {fileID: 246182836}
+      - {fileID: 1557172943}
+      - {fileID: 373087460}
+      - {fileID: 1404440715}
+    - list:
+      - {fileID: 584905001}
+      - {fileID: 1459715019}
+      - {fileID: 1954885659}
+      - {fileID: 71453660}
+    - list:
+      - {fileID: 1736616839}
+      - {fileID: 365159602}
+      - {fileID: 1707394527}
+      - {fileID: 1101876049}
+    - list:
+      - {fileID: 648865909}
+      - {fileID: 351607984}
+      - {fileID: 1018642004}
+      - {fileID: 884317932}
+  saveMenu:
+    panelMapIndex: 4
+    panel: {fileID: 1916612187}
+    useBackButton: 1
+    menuBackButtonIndex: 1
+    menuMap:
+    - list:
+      - {fileID: 213339031}
+      - {fileID: 504798922}
+    - list:
+      - {fileID: 1133063830}
+      - {fileID: 515695374}
+  languageMenu:
+    panelMapIndex: 3
+    panel: {fileID: 1725665746}
+    useBackButton: 1
+    menuBackButtonIndex: 2
+    menuMap:
+    - list:
+      - {fileID: 213339031}
+      - {fileID: 871365956}
+      - {fileID: 137935097}
   resumeButton: {fileID: 1417691430}
   parameterButton: {fileID: 1495831798}
   saveButton: {fileID: 1314062909}
   inputsButton: {fileID: 1676783293}
   languagesButton: {fileID: 1633596044}
   mainMenuButton: {fileID: 1571132178}
+  backButton: {fileID: 213339032}
   rebindingInteractKeyboard: {fileID: 246182836}
   resetInteractKeyboard: {fileID: 584905001}
   rebindingInteractController: {fileID: 1736616839}
@@ -8953,7 +9030,6 @@ MonoBehaviour:
   resetPoseTorchController: {fileID: 884317932}
   englishButton: {fileID: 871365957}
   frenchButton: {fileID: 137935098}
-  backButton: {fileID: 213339032}
   playButton: {fileID: 0}
   quitButton: {fileID: 0}
 --- !u!1 &1692824656

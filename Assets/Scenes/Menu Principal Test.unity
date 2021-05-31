@@ -2859,12 +2859,16 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   selection: {fileID: 2077250673}
   pauseMenu:
-    panelMapIndex: 0
+    panelMapIndex: 10
     panel: {fileID: 0}
+    useBackButton: 0
+    menuBackButtonIndex: 0
     menuMap: []
   mainMenu:
     panelMapIndex: 0
     panel: {fileID: 41562340}
+    useBackButton: 0
+    menuBackButtonIndex: 0
     menuMap:
     - list:
       - {fileID: 215448541}
@@ -2873,6 +2877,8 @@ MonoBehaviour:
   parametersMenu:
     panelMapIndex: 2
     panel: {fileID: 1501152916}
+    useBackButton: 1
+    menuBackButtonIndex: 0
     menuMap:
     - list:
       - {fileID: 1462368396}
@@ -2882,6 +2888,8 @@ MonoBehaviour:
   inputsMenu:
     panelMapIndex: 5
     panel: {fileID: 2013758204}
+    useBackButton: 1
+    menuBackButtonIndex: 2
     menuMap:
     - list:
       - {fileID: 1462368396}
@@ -2891,9 +2899,9 @@ MonoBehaviour:
       - {fileID: 1407076585}
     - list:
       - {fileID: 1626708298}
+      - {fileID: 2074453457}
       - {fileID: 930715627}
       - {fileID: 1965874627}
-      - {fileID: 1407076584}
     - list:
       - {fileID: 2074453458}
       - {fileID: 1470075649}
@@ -2907,6 +2915,8 @@ MonoBehaviour:
   saveMenu:
     panelMapIndex: 4
     panel: {fileID: 1274059130}
+    useBackButton: 1
+    menuBackButtonIndex: 2
     menuMap:
     - list:
       - {fileID: 1462368396}
@@ -2917,6 +2927,8 @@ MonoBehaviour:
   languageMenu:
     panelMapIndex: 1
     panel: {fileID: 449633880}
+    useBackButton: 1
+    menuBackButtonIndex: 2
     menuMap:
     - list:
       - {fileID: 1462368396}

@@ -67,9 +67,9 @@ public class SelectionUI : MonoBehaviour
 
     public void TriggerSelection()
     {
-        if (menuManager.currentMap.map[posOnMap.x, posOnMap.y].TryGetComponent(out Button button))
+        if (menuManager.currentMap.map[posOnMap.x, posOnMap.y].TryGetComponent(out Button button) && button != null)
         {
-            button.onClick?.Invoke();
+            button?.onClick?.Invoke();
         }
     }
 
