@@ -7,7 +7,12 @@ public class SelectionUI : MonoBehaviour
 {
     public MenuManager menuManager;
 
+    public float scaleMultiplierX = 1.1f;
+    public float scaleMultiplierY = 1.1f;
+
     public Vector2Int posOnMap;
+
+    private RectTransform _rectTransform;
 
     void Awake()
     {
@@ -19,7 +24,7 @@ public class SelectionUI : MonoBehaviour
 
     void Start()
     {
-        
+        _rectTransform = GetComponent<RectTransform>();
     }
     
     void Update()
@@ -101,8 +106,34 @@ public class SelectionUI : MonoBehaviour
         {
             posOnMap.y = 0;
         }
-        
-        GetComponent<RectTransform>().position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
-        //Debug.Log(vector2Int + " -> " + posOnMap);
+
+        if (menuManager.currentMap.map[posOnMap.x, posOnMap.y] != null)
+        {
+            _rectTransform.position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
+            _rectTransform.sizeDelta = menuManager.currentMap.map[posOnMap.x, posOnMap.y].sizeDelta;
+
+            Vector3 v = AdaptScale(menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject, menuManager.currentMap.map[posOnMap.x, posOnMap.y].localScale);
+            _rectTransform.localScale = new Vector3(v.x * scaleMultiplierX, v.y * scaleMultiplierY);
+            //Debug.Log(vector2Int + " -> " + posOnMap);
+        }
+        else
+        {
+            MoveMapPosition(vector2I);
+        }
+    }
+
+    public Vector3 AdaptScale(GameObject go, Vector3 scale)
+    {
+        if (go.transform.parent != transform.parent)
+        {
+            Vector3 childScale = new Vector3(scale.x * go.transform.parent.localScale.x, scale.y * go.transform.parent.localScale.y);
+            //Debug.Log($"ChildScale : {childScale}");
+            return AdaptScale(go.transform.parent.gameObject, childScale);
+        }
+        else
+        {
+            //Debug.Log($"finale scale : {scale}");
+            return scale;
+        }
     }
 }

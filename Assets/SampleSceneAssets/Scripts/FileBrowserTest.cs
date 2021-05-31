@@ -3,14 +3,27 @@ using System.Collections.Generic;
 using System.IO;
 using SimpleFileBrowser;
 using UnityEngine;
+using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class FileBrowserTest : MonoBehaviour
 {
 	public SavePanel SavePanel;
+
+	public Button browseButton;
 	
 	 void Start()
     {
-        // Set filters (optional)
+	    if (Gamepad.current == null)
+        {
+	        browseButton.gameObject.SetActive(true);
+	        browseButton.onClick.AddListener(StartBrowsing);
+        }
+    }
+
+	 public void StartBrowsing()
+	 {
+		 // Set filters (optional)
         // It is sufficient to set the filters just once (instead of each time before showing the file browser dialog), 
         // if all the dialogs will be using the same filters
         FileBrowser.SetFilters(true, new FileBrowser.Filter("Images", ".jpg", ".png"), 
@@ -53,7 +66,7 @@ public class FileBrowserTest : MonoBehaviour
 
         // Coroutine example
         StartCoroutine(ShowLoadDialogCoroutine());
-    }
+	 }
 
     IEnumerator ShowLoadDialogCoroutine()
 	{

@@ -9864,7 +9864,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5753909483430851680}
-  m_LocalRotation: {x: 0.11485545, y: 0.000000028979558, z: -0.0000000033506342, w: 0.9933822}
+  m_LocalRotation: {x: 0.025841672, y: 0.0000000010750397, z: -2.7790107e-11, w: 0.99966604}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -9908,7 +9908,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2886463, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -10289,8 +10289,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: f1659d4aa2821f841be3ea4d6ee4c6a1, type: 2}
-  - {fileID: 2100000, guid: 1789e3897bbd5e6408ddc99256b59bc0, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -11292,7 +11292,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 5753909484136186841}
-  m_LocalRotation: {x: -0.004421358, y: -0.007865526, z: -0.00003477772, w: 0.9999593}
+  m_LocalRotation: {x: -0.0044212285, y: -0.010850151, z: -0.000047974274, w: 0.9999314}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -11336,7 +11336,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2886463, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -12047,7 +12047,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: fd77a22b6426c8e4181b6d1df2ad4a3d, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 6cf54cd3f9689ad4cac5cc9cad1a5c67, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -17334,7 +17334,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2886463, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18046,7 +18046,7 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1789e3897bbd5e6408ddc99256b59bc0, type: 2}
+  - {fileID: 0}
   - {fileID: 2100000, guid: 69de68d46e90b3441a4e31b71e775f5b, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
@@ -18342,6 +18342,7 @@ GameObject:
   - component: {fileID: 5753909485233920486}
   - component: {fileID: 5753909485233920487}
   - component: {fileID: 5753909485233920484}
+  - component: {fileID: 6553837726616937504}
   m_Layer: 0
   m_Name: Personnage Avec Animations Variant
   m_TagString: Untagged
@@ -18420,7 +18421,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   controller: {fileID: 5753909485233920486}
   cam: {fileID: 5753909485244633305}
-  animator: {fileID: 5753909485233920487}
   speed: 6
   turnSmoothTime: 0.1
   isGrounded: 0
@@ -18431,6 +18431,38 @@ MonoBehaviour:
     m_Bits: 64
   gravity: 9
   jumpHeight: 3
+  cameraFollowTranfom: {fileID: 0}
+  sensibility: 0
+--- !u!114 &6553837726616937504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5753909485233920485}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Actions: {fileID: -944628639613478452, guid: b58f79af2a83f824f929dc51c65c0955, type: 3}
+  m_NotificationBehavior: 0
+  m_UIInputModule: {fileID: 0}
+  m_DeviceLostEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_DeviceRegainedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ControlsChangedEvent:
+    m_PersistentCalls:
+      m_Calls: []
+  m_ActionEvents: []
+  m_NeverAutoSwitchControlSchemes: 0
+  m_DefaultControlScheme: 
+  m_DefaultActionMap: Gameplay
+  m_SplitScreenIndex: -1
+  m_Camera: {fileID: 0}
 --- !u!1 &5753909485234270192
 GameObject:
   m_ObjectHideFlags: 0
@@ -18739,7 +18771,7 @@ MonoBehaviour:
     ModeOverride: 0
     LensShift: {x: 0, y: 0}
     GateFit: 0
-    m_SensorSize: {x: 1.2886463, y: 1}
+    m_SensorSize: {x: 1.7777778, y: 1}
   m_Transitions:
     m_BlendHint: 0
     m_InheritPosition: 0
@@ -18925,8 +18957,8 @@ SkinnedMeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 2c11c70a700f4da41b70c500a2848fcb, type: 2}
-  - {fileID: 2100000, guid: 2c11c70a700f4da41b70c500a2848fcb, type: 2}
+  - {fileID: 0}
+  - {fileID: 0}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
