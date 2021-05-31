@@ -63,6 +63,11 @@ public class MenuManager : MonoBehaviour
     public Button quitButton;
 
     private List<Menu> allMenus;
+    
+    [Header("References")]
+    public Image blackPanel;
+    public GameObject loadScreen;
+    public GameObject loadBarScaler;
 
     //public UnityEvent[] Events;
 
@@ -111,8 +116,8 @@ public class MenuManager : MonoBehaviour
         englishButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(englishButton)));
         frenchButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.French));
         frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
-        
-        playButton?.onClick.AddListener(() => LevelManager.LoadScene(1));
+
+        playButton?.onClick.AddListener(() => StartCoroutine(LevelManager.LoadAsyncScene(1)));//() => LevelManager.LoadScene(1));
         playButton?.onClick.AddListener(() => Gears.gears.playerInput.SwitchCurrentActionMap("Gameplay"));
         quitButton?.onClick.AddListener(() => Application.Quit());
     }
