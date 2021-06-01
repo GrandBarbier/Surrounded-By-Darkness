@@ -39,6 +39,14 @@ public class Shattering : MonoBehaviour
             {
                 Rigidbody r = child.AddComponent<Rigidbody>();
                 r.AddForce(new Vector3(0, -500, 0));
+                GameObject g = Instantiate(Gears.gears.somkeTrail, child.transform.position, child.transform.rotation);
+                g.transform.SetParent(child.transform);
+                
+                ParticleSystem particleSystem = g.GetComponent<ParticleSystem>();
+                var v = particleSystem.shape;
+                v.enabled = true;
+                v.shapeType = ParticleSystemShapeType.Mesh;
+                v.mesh = child.GetComponent<MeshFilter>().mesh;
             }
             
             shatered = true;
