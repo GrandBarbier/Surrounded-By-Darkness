@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,6 +7,7 @@ using UnityEngine.UI;
 
 public class LevelManager
 {
+   public static Action preLoadingScene;
    public static IEnumerator FadeDuration(Image image, Color start, Color end, float duration, bool setActiveFalse = true)
    {
       image.gameObject.SetActive(true);
@@ -14,34 +16,48 @@ public class LevelManager
       for (float t = 0f; t < duration; t += Time.deltaTime) 
       {
          float normalizedTime = t/duration;
-         image.color = Color.Lerp(start, end, normalizedTime);
+
+         if (image)
+         {
+            image.color = Color.Lerp(start, end, normalizedTime);
+         }
+         else
+         {
+            break;
+         }
+         
          yield return null;
       }
-      
-      image.color = end;
 
-      if (setActiveFalse)
+      if (image)
       {
-         image.gameObject.SetActive(false);
+         image.color = end;
+
+         if (setActiveFalse)
+         {
+            image.gameObject.SetActive(false);
+         }
       }
    }
 
    public static void LoadScene(int index)
    {
+      preLoadingScene?.Invoke();
+      preLoadingScene = null;
       SceneManager.LoadScene(index);
       Gears.gears.StartCoroutine(FadeDuration(Gears.gears.menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
    }
    
    public static IEnumerator LoadAsyncScene(int sceneIndex)
    {
-      // The Application loads the Scene in the background as the current Scene runs.
-      // This is particularly good for creating loading screens.
-      // You could also load the Scene by using sceneBuildIndex. In this case Scene2 has
-      // a sceneBuildIndex of 1 as shown in Build Settings.
-
+      preLoadingScene?.Invoke();
+      preLoadingScene = null;
+      
+      //Load new scene and display loading screen
       AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
       
-      Gears.gears.StartCoroutine(FadeDuration(Gears.gears.menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 0.5f));
+      Gears.gears.StartCoroutine(FadeDuration(Gears.gears.menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 0f), 
+         end: new Color(r: 0f, g: 0f, b: 0f, a: 1f), duration: 0.5f));
       Gears.gears.menuManager.loadScreen.SetActive(true);
 
       // Wait until the asynchronous scene fully loads
