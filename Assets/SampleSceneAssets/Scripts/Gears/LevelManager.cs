@@ -1,28 +1,71 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class LevelManager
 {
-   public static IEnumerator FadeDuration(Color start, Color end, float duration)
+   public static Action preLoadingScene;
+   public static IEnumerator FadeDuration(Image image, Color start, Color end, float duration, bool setActiveFalse = true)
    {
-      Gears.gears.blackPanel.gameObject.SetActive(true);
-      Gears.gears.blackPanel.color = start;
+      image.gameObject.SetActive(true);
+      image.color = start;
       
       for (float t = 0f; t < duration; t += Time.deltaTime) 
       {
          float normalizedTime = t/duration;
-         Gears.gears.blackPanel.color = Color.Lerp(start, end, normalizedTime);
+
+         if (image)
+         {
+            image.color = Color.Lerp(start, end, normalizedTime);
+         }
+         else
+         {
+            break;
+         }
+         
          yield return null;
       }
-      
-      Gears.gears.blackPanel.color = end;
+
+      if (image)
+      {
+         image.color = end;
+
+         if (setActiveFalse)
+         {
+            image.gameObject.SetActive(false);
+         }
+      }
    }
 
    public static void LoadScene(int index)
    {
+      preLoadingScene?.Invoke();
+      preLoadingScene = null;
       SceneManager.LoadScene(index);
-      Gears.gears.StartCoroutine(FadeDuration(start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
+      Gears.gears.StartCoroutine(FadeDuration(Gears.gears.menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
+   }
+   
+   public static IEnumerator LoadAsyncScene(int sceneIndex)
+   {
+      preLoadingScene?.Invoke();
+      preLoadingScene = null;
+      
+      //Load new scene and display loading screen
+      AsyncOperation asyncLoad = SceneManager.LoadSceneAsync(sceneIndex);
+      
+      Gears.gears.StartCoroutine(FadeDuration(Gears.gears.menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 0f), 
+         end: new Color(r: 0f, g: 0f, b: 0f, a: 1f), duration: 0.5f));
+      Gears.gears.menuManager.loadScreen.SetActive(true);
+
+      // Wait until the asynchronous scene fully loads
+      while (!asyncLoad.isDone)
+      {
+         Gears.gears.menuManager.loadBarScaler.transform.localScale = new Vector3(asyncLoad.progress, Gears.gears.menuManager.loadBarScaler.transform.localScale.y, 
+            Gears.gears.menuManager.loadBarScaler.transform.localScale.z);
+         yield return null;
+      }
    }
 }
