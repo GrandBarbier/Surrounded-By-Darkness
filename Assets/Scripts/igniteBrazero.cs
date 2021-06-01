@@ -6,6 +6,7 @@ using UnityEngine;
 public class igniteBrazero : MonoBehaviour
 {
 	public GameObject light;
+	public GameObject particles;
 	private void OnTriggerStay(Collider other)
 	{
 		if (Input.GetKeyDown(KeyCode.W))
@@ -15,6 +16,7 @@ public class igniteBrazero : MonoBehaviour
 			{
 				//lancer animation
 				light.SetActive(true);
+				particles.SetActive(true);
 			}
 		}
 		//else allumer torche
