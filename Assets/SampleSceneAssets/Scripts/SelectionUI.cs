@@ -33,8 +33,8 @@ public class SelectionUI : MonoBehaviour
         Gears.gears.playerInput.actions["Enter"].performed += action1;
         Gears.gears.playerInput.actions["MoveMenu"].performed += action2;
 
-        //LevelManager.preLoadingScene += () => RemoveAction("Enter", action1);
-        //LevelManager.preLoadingScene += () => RemoveAction("MoveMenu", action2);
+        //LevelManager.preLoadingScene += () => Gears.gears.playerInput.actions["Enter"].performed -= action1;
+        //LevelManager.preLoadingScene += () => Gears.gears.playerInput.actions["MoveMenu"].performed -= action2;
         
         _rectTransform = GetComponent<RectTransform>();
     }
