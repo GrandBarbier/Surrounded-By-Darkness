@@ -32,6 +32,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo1:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -111,6 +115,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
+    - _Darkness: 0.014
     - _Darkness1: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -119,7 +124,9 @@ Material:
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
+    - _GradiantOffset: 0
     - _GradiantOffset1: 0
+    - _GradiantScale: 1
     - _GradiantScale1: 1
     - _Metallic: 0
     - _OcclusionStrength: 1
@@ -148,5 +155,6 @@ Material:
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0, g: 0.6742267, b: 1, a: 0}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0}
     - _Tint1: {r: 1, g: 1, b: 1, a: 0}
   m_BuildTextureStacks: []
