@@ -17,6 +17,9 @@ public class Gears : MonoBehaviour
 
     public LayerMask interactionLayer;
 
+    [Header("References")] 
+    public GameObject somkeTrail;
+
     void Awake()
     {
         if (gears == null)
