@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -10,9 +11,9 @@ public class Gears : MonoBehaviour
 
     public PlayerInput playerInput;
 
-    //public InputManager InputManager;
+    public MenuManager menuManager;
 
-    public Image blackPanel;
+    //public InputManager InputManager;
 
     public LayerMask interactionLayer;
 
@@ -27,16 +28,17 @@ public class Gears : MonoBehaviour
         }
         else
         {
+            //gears.menuManager = menuManager;
             Destroy(gameObject);
         }
     }
     
     void Start()
     {
-        if (blackPanel)
+        /*if (menuManager?.blackPanel)
         {
-            StartCoroutine(LevelManager.FadeDuration(start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
-        }
+            StartCoroutine(LevelManager.FadeDuration(menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
+        }*/
     }
     
     void Update()
