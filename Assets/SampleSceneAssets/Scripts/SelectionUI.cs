@@ -15,6 +15,10 @@ public class SelectionUI : MonoBehaviour
 
     public Vector2Int posOnMap;
 
+    public Color idleColor;
+    public Color pressedColor;
+
+    private Image _image;
     private RectTransform _rectTransform;
 
     private Action<InputAction.CallbackContext> action1;
@@ -37,12 +41,16 @@ public class SelectionUI : MonoBehaviour
         //LevelManager.preLoadingScene += () => Gears.gears.playerInput.actions["MoveMenu"].performed -= action2;
         
         _rectTransform = GetComponent<RectTransform>();
+        _image = GetComponent<Image>();
     }
     
     void OnDestroy()
     {
-        Gears.gears.playerInput.actions["Enter"].performed -= action1;
-        Gears.gears.playerInput.actions["MoveMenu"].performed -= action2;
+        if (Gears.gears.playerInput != null)
+        {
+            Gears.gears.playerInput.actions["Enter"].performed -= action1;
+            Gears.gears.playerInput.actions["MoveMenu"].performed -= action2;
+        }
     }
 
     void Start()
@@ -61,6 +69,18 @@ public class SelectionUI : MonoBehaviour
         {
             button.onClick?.Invoke();
         }
+        
+        StartCoroutine(SelectionColor());
+    }
+
+    public IEnumerator SelectionColor()
+    {
+        _image.color = pressedColor;
+        
+        yield return new WaitForSeconds(0.1f);
+        
+        //Debug.Log("set color to idle");
+        _image.color = idleColor;
     }
 
     public void MoveMapPosition(Vector2Int vector2I)
@@ -128,10 +148,8 @@ public class SelectionUI : MonoBehaviour
             //Debug.Log($"ChildScale : {childScale}");
             return AdaptScale(go.transform.parent.gameObject, childScale);
         }
-        else
-        {
-            //Debug.Log($"finale scale : {scale}");
-            return scale;
-        }
+        
+        //Debug.Log($"finale scale : {scale}");
+        return scale;
     }
 }

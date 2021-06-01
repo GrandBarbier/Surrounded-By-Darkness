@@ -111,9 +111,9 @@ public class MenuManager : MonoBehaviour
         
         //Change language when you click languages buttons
         englishButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.English));
-        englishButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(englishButton)));
+        //englishButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(englishButton)));
         frenchButton?.onClick.AddListener(() => LanguageSystem.SetLanguage(LanguageSystem.Languages.French));
-        frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
+        //frenchButton?.onClick.AddListener(() => StartCoroutine(TriggerButtonColor(frenchButton)));
 
         playButton?.onClick.AddListener(() => StartCoroutine(LevelManager.LoadAsyncScene(1)));//() => LevelManager.LoadScene(1));
         playButton?.onClick.AddListener(() => Gears.gears.playerInput.SwitchCurrentActionMap("Gameplay"));
