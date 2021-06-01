@@ -93,7 +93,9 @@ Material:
     - FoamAmount: 0.5
     - FoamCutOff: 1.5
     - FoamScale: 500
+    - FoamScale_1: 0
     - FoamSpeed: 1
+    - FoamTAILLE: 1
     - RefractionScale: 1
     - RefractionSpeed: 0.05
     - RefractionStrenght: 2

@@ -21,8 +21,8 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: New Material
-  m_Shader: {fileID: 4800000, guid: e6373dcedad11a442a7cf1f5dfc87a36, type: 3}
-  m_ShaderKeywords: _GLOSSYREFLECTIONS_OFF
+  m_Shader: {fileID: 4800000, guid: 29c98551e9e0a1f44a6ca580744c2b55, type: 3}
+  m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
   m_DoubleSidedGI: 0
