@@ -1,7 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
+using Object = UnityEngine.Object;
 
 public class SelectionUI : MonoBehaviour
 {
@@ -14,14 +17,32 @@ public class SelectionUI : MonoBehaviour
 
     private RectTransform _rectTransform;
 
+    private Action<InputAction.CallbackContext> action1;
+    private Action<InputAction.CallbackContext> action2;
+
     void Awake()
     {
-        Gears.gears.playerInput.actions["MoveMenu"].performed += context => MoveMapPosition(
-            new Vector2Int((int) context.ReadValue<Vector2>().x, (int) context.ReadValue<Vector2>().y));
+        //Gears.gears.playerInput.actions["MoveMenu"].performed += context => MoveMapPosition(
+            //new Vector2Int((int) context.ReadValue<Vector2>().x, (int) context.ReadValue<Vector2>().y));
+        
+        //Gears.gears.playerInput.actions["Enter"].performed += context => TriggerSelection();
+        
+        action1 = context => TriggerSelection();
+        action2 = context => MoveMapPosition(new Vector2Int((int) context.ReadValue<Vector2>().x, (int) context.ReadValue<Vector2>().y));
 
-        Gears.gears.playerInput.actions["Enter"].performed += context => TriggerSelection();
+        Gears.gears.playerInput.actions["Enter"].performed += action1;
+        Gears.gears.playerInput.actions["MoveMenu"].performed += action2;
+
+        //LevelManager.preLoadingScene += () => RemoveAction("Enter", action1);
+        //LevelManager.preLoadingScene += () => RemoveAction("MoveMenu", action2);
         
         _rectTransform = GetComponent<RectTransform>();
+    }
+    
+    void OnDestroy()
+    {
+        Gears.gears.playerInput.actions["Enter"].performed -= action1;
+        Gears.gears.playerInput.actions["MoveMenu"].performed -= action2;
     }
 
     void Start()
@@ -31,45 +52,14 @@ public class SelectionUI : MonoBehaviour
     
     void Update()
     {
-        /*foreach (var interaction in InputManager.forwardKeys)
-        {
-            if (Input.GetKeyDown(interaction))
-            {
-                MoveMapPosition(new Vector2Int(0,-1));
-                break;
-            }
-        }
-        foreach (var interaction in InputManager.LeftKeys)
-        {
-            if (Input.GetKeyDown(interaction))
-            {
-                MoveMapPosition(new Vector2Int(-1,0));
-                break;
-            }
-        }
-        foreach (var interaction in InputManager.backWardKeys)
-        {
-            if (Input.GetKeyDown(interaction))
-            {
-                MoveMapPosition(new Vector2Int(0,1));
-                break;
-            }
-        }
-        foreach (var interaction in InputManager.rightKeys)
-        {
-            if (Input.GetKeyDown(interaction))
-            {
-                MoveMapPosition(new Vector2Int(1,0));
-                break;
-            }
-        }*/
+       
     }
 
     public void TriggerSelection()
     {
         if (menuManager.currentMap.map[posOnMap.x, posOnMap.y].TryGetComponent(out Button button) && button != null)
         {
-            button?.onClick?.Invoke();
+            button.onClick?.Invoke();
         }
     }
 
@@ -108,7 +98,7 @@ public class SelectionUI : MonoBehaviour
         {
             posOnMap.y = 0;
         }
-
+        
         if (menuManager.currentMap.map[posOnMap.x, posOnMap.y] != null && menuManager.currentMap.map[posOnMap.x, posOnMap.y].gameObject.activeSelf)
         {
            ScaleSelection();
@@ -121,6 +111,7 @@ public class SelectionUI : MonoBehaviour
     
     public void ScaleSelection()
     {
+        _rectTransform = GetComponent<RectTransform>();
         _rectTransform.position = menuManager.currentMap.map[posOnMap.x, posOnMap.y].position;
         _rectTransform.sizeDelta = menuManager.currentMap.map[posOnMap.x, posOnMap.y].sizeDelta;
         

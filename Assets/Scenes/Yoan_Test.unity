@@ -625,7 +625,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Save
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2169,7 +2169,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Load
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2696,7 +2696,7 @@ GameObject:
   - component: {fileID: 515695376}
   - component: {fileID: 515695375}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: LoadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -5797,7 +5797,7 @@ GameObject:
   - component: {fileID: 1133063832}
   - component: {fileID: 1133063831}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SaveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -9137,9 +9137,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selection: {fileID: 1286512335}
-  pauseMenu:
-    panelMapIndex: 1
+  mainMenu:
     panel: {fileID: 732933647}
+    startPos: {x: 0, y: 0}
+    panelMapIndex: 1
     useBackButton: 0
     menuBackButtonIndex: 0
     menuMap:
@@ -9148,15 +9149,10 @@ MonoBehaviour:
       - {fileID: 1495831797}
       - {fileID: 1314062908}
       - {fileID: 1571132177}
-  mainMenu:
-    panelMapIndex: 0
-    panel: {fileID: 0}
-    useBackButton: 0
-    menuBackButtonIndex: 0
-    menuMap: []
   parametersMenu:
-    panelMapIndex: 2
     panel: {fileID: 1033804599}
+    startPos: {x: 0, y: 1}
+    panelMapIndex: 2
     useBackButton: 1
     menuBackButtonIndex: 1
     menuMap:
@@ -9165,8 +9161,9 @@ MonoBehaviour:
       - {fileID: 1633596043}
       - {fileID: 1676783292}
   inputsMenu:
-    panelMapIndex: 5
     panel: {fileID: 58697119}
+    startPos: {x: 0, y: 1}
+    panelMapIndex: 5
     useBackButton: 1
     menuBackButtonIndex: 2
     menuMap:
@@ -9177,23 +9174,27 @@ MonoBehaviour:
       - {fileID: 373087460}
       - {fileID: 1404440715}
     - list:
+      - {fileID: 0}
       - {fileID: 584905001}
       - {fileID: 1459715019}
       - {fileID: 1954885659}
       - {fileID: 71453660}
     - list:
+      - {fileID: 0}
       - {fileID: 1736616839}
       - {fileID: 365159602}
       - {fileID: 1707394527}
       - {fileID: 1101876049}
     - list:
+      - {fileID: 0}
       - {fileID: 648865909}
       - {fileID: 351607984}
       - {fileID: 1018642004}
       - {fileID: 884317932}
   saveMenu:
-    panelMapIndex: 4
     panel: {fileID: 1916612187}
+    startPos: {x: 1, y: 0}
+    panelMapIndex: 4
     useBackButton: 1
     menuBackButtonIndex: 1
     menuMap:
@@ -9204,8 +9205,9 @@ MonoBehaviour:
       - {fileID: 1133063830}
       - {fileID: 515695374}
   languageMenu:
-    panelMapIndex: 3
     panel: {fileID: 1725665746}
+    startPos: {x: 0, y: 1}
+    panelMapIndex: 3
     useBackButton: 1
     menuBackButtonIndex: 2
     menuMap:
@@ -9243,6 +9245,33 @@ MonoBehaviour:
   blackPanel: {fileID: 553502657}
   loadScreen: {fileID: 1469842358}
   loadBarScaler: {fileID: 716308024}
+  startEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1687405326}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: EnablePause
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 1687405326}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: DefaultFadeIn
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1692824656
 GameObject:
   m_ObjectHideFlags: 0

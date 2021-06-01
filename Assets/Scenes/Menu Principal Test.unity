@@ -581,7 +581,7 @@ GameObject:
   - component: {fileID: 132720883}
   - component: {fileID: 132720882}
   m_Layer: 5
-  m_Name: Button
+  m_Name: SaveButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -604,7 +604,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -335, y: 373}
+  m_AnchoredPosition: {x: -335, y: 393}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &132720882
@@ -1652,7 +1652,7 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1274059131}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
@@ -2179,7 +2179,7 @@ GameObject:
   - component: {fileID: 840716038}
   - component: {fileID: 840716037}
   m_Layer: 5
-  m_Name: Button (1)
+  m_Name: LoadButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2202,7 +2202,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -335, y: 308}
+  m_AnchoredPosition: {x: -335, y: 341}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &840716037
@@ -2319,11 +2319,11 @@ RectTransform:
   m_Children:
   - {fileID: 1112902762}
   m_Father: {fileID: 1274059131}
-  m_RootOrder: 2
+  m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -575, y: 342}
+  m_AnchoredPosition: {x: -524, y: 342}
   m_SizeDelta: {x: 160, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &871400148
@@ -3190,15 +3190,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   selection: {fileID: 2077250673}
-  pauseMenu:
-    panelMapIndex: 10
-    panel: {fileID: 0}
-    useBackButton: 0
-    menuBackButtonIndex: 0
-    menuMap: []
   mainMenu:
-    panelMapIndex: 0
     panel: {fileID: 41562340}
+    startPos: {x: 0, y: 0}
+    panelMapIndex: 0
     useBackButton: 0
     menuBackButtonIndex: 0
     menuMap:
@@ -3207,8 +3202,9 @@ MonoBehaviour:
       - {fileID: 1798291875}
       - {fileID: 1963286822}
   parametersMenu:
-    panelMapIndex: 2
     panel: {fileID: 1501152916}
+    startPos: {x: 0, y: 1}
+    panelMapIndex: 2
     useBackButton: 1
     menuBackButtonIndex: 0
     menuMap:
@@ -3218,8 +3214,9 @@ MonoBehaviour:
       - {fileID: 1850905340}
       - {fileID: 788321535}
   inputsMenu:
-    panelMapIndex: 5
     panel: {fileID: 2013758204}
+    startPos: {x: 0, y: 1}
+    panelMapIndex: 5
     useBackButton: 1
     menuBackButtonIndex: 2
     menuMap:
@@ -3230,23 +3227,27 @@ MonoBehaviour:
       - {fileID: 1965874628}
       - {fileID: 1407076585}
     - list:
+      - {fileID: 0}
       - {fileID: 1626708298}
-      - {fileID: 2074453457}
       - {fileID: 930715627}
       - {fileID: 1965874627}
+      - {fileID: 1407076584}
     - list:
+      - {fileID: 0}
       - {fileID: 2074453458}
       - {fileID: 1470075649}
       - {fileID: 2122585370}
       - {fileID: 1662405425}
     - list:
+      - {fileID: 0}
       - {fileID: 2074453457}
       - {fileID: 1470075648}
       - {fileID: 2122585369}
       - {fileID: 1662405424}
   saveMenu:
-    panelMapIndex: 4
     panel: {fileID: 1274059130}
+    startPos: {x: 1, y: 0}
+    panelMapIndex: 4
     useBackButton: 1
     menuBackButtonIndex: 2
     menuMap:
@@ -3257,8 +3258,9 @@ MonoBehaviour:
       - {fileID: 132720881}
       - {fileID: 840716036}
   languageMenu:
-    panelMapIndex: 1
     panel: {fileID: 449633880}
+    startPos: {x: 0, y: 1}
+    panelMapIndex: 1
     useBackButton: 1
     menuBackButtonIndex: 2
     menuMap:
@@ -3296,6 +3298,21 @@ MonoBehaviour:
   blackPanel: {fileID: 401255420}
   loadScreen: {fileID: 768568711}
   loadBarScaler: {fileID: 1642377884}
+  startEvent:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 1179053481}
+        m_TargetAssemblyTypeName: MenuManager, Assembly-CSharp
+        m_MethodName: SwitchActionMap
+        m_Mode: 5
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: Menu
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &1209235633
 GameObject:
   m_ObjectHideFlags: 0
@@ -3462,8 +3479,8 @@ RectTransform:
   m_Children:
   - {fileID: 1123221021}
   - {fileID: 650961858}
-  - {fileID: 871400147}
   - {fileID: 778562765}
+  - {fileID: 871400147}
   - {fileID: 1415821729}
   - {fileID: 132720881}
   - {fileID: 840716036}
@@ -4717,7 +4734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: LoadButton
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -5650,7 +5667,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Button
+  m_text: Save
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}

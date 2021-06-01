@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,18 +28,17 @@ public class Gears : MonoBehaviour
         }
         else
         {
-            gears.menuManager = menuManager;
-            gears.playerInput = playerInput;
+            //gears.menuManager = menuManager;
             Destroy(gameObject);
         }
     }
     
     void Start()
     {
-        if (menuManager?.blackPanel)
+        /*if (menuManager?.blackPanel)
         {
             StartCoroutine(LevelManager.FadeDuration(menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
-        }
+        }*/
     }
     
     void Update()
