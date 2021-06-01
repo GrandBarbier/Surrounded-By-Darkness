@@ -847,6 +847,7 @@
             <e p="MenuManager.cs" t="Include" />
             <e p="SelectionUI.cs" t="Include" />
             <e p="SetTextLanguage.cs" t="Include" />
+            <e p="Shattering.cs" t="Include" />
             <e p="TriggerInteraction.cs" t="Include" />
           </e>
         </e>
