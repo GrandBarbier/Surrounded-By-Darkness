@@ -239,7 +239,7 @@ public class MenuManager : MonoBehaviour
 
     public void DefaultFadeIn()
     {
-        Debug.Log("DefaultFadeIn");
+        //Debug.Log("DefaultFadeIn");
         StartCoroutine(LevelManager.FadeDuration(blackPanel, new Color(0f,0f,0f,1f), new Color(0f,0f,0f,0f), 1f));
     }
 
