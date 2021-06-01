@@ -11,7 +11,9 @@ Shader "Portal"
 		_NoiseScale("NoiseScale", Float) = 10
 		_RefractionPower("RefractionPower", Float) = 5
 		[HDR]_ColorEmission("ColorEmission", Color) = (0,0,0,0)
-		[ASEEnd][HDR]_ColorAlbedo("ColorAlbedo", Color) = (0,0,0,0)
+		[HDR]_ColorAlbedo("ColorAlbedo", Color) = (0,0,0,0)
+		_Smoothness("Smoothness", Float) = 1
+		[ASEEnd]_Metallic("Metallic", Float) = 1
 
 		//_TransmissionShadow( "Transmission Shadow", Range( 0, 1 ) ) = 0.5
 		//_TransStrength( "Trans Strength", Range( 0, 50 ) ) = 1
@@ -248,6 +250,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -537,8 +541,8 @@ Shader "Portal"
 				float3 Normal = float3(0, 0, 1);
 				float3 Emission = ( fetchOpaqueVal28 * _ColorEmission ).rgb;
 				float3 Specular = 0.5;
-				float Metallic = 0;
-				float Smoothness = 0.5;
+				float Metallic = _Metallic;
+				float Smoothness = _Smoothness;
 				float Occlusion = 1;
 				float Alpha = 1;
 				float AlphaClipThreshold = 0.5;
@@ -758,6 +762,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1027,6 +1033,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1291,6 +1299,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1634,6 +1644,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -1878,6 +1890,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -2174,6 +2188,8 @@ Shader "Portal"
 			float _TextureSpeed;
 			float _NoiseScale;
 			float _RefractionPower;
+			float _Metallic;
+			float _Smoothness;
 			#ifdef _TRANSMISSION_ASE
 				float _TransmissionShadow;
 			#endif
@@ -2620,7 +2636,7 @@ Shader "Portal"
 }
 /*ASEBEGIN
 Version=18908
-346.4;252.8;583.2;507;1419.583;363.5587;2.336903;True;False
+551.2;220.8;583.2;507;-582.6391;42.24899;1.113966;True;False
 Node;AmplifyShaderEditor.RangedFloatNode;13;-1250.721,-144.0902;Inherit;False;Property;_TextureSpeed;TextureSpeed;0;0;Create;True;0;0;0;False;0;False;1.5;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleTimeNode;14;-1250.721,-17.57627;Inherit;True;1;0;FLOAT;1;False;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;15;-1033.416,-14.5994;Inherit;False;2;2;0;FLOAT;0;False;1;FLOAT;0;False;1;FLOAT;0
@@ -2632,10 +2648,12 @@ Node;AmplifyShaderEditor.RangedFloatNode;24;-324.937,208.6604;Inherit;False;Prop
 Node;AmplifyShaderEditor.ScreenPosInputsNode;26;109.6753,-267.6274;Float;False;0;False;0;5;FLOAT4;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.FunctionNode;23;-97.21269,-36.92545;Inherit;True;Normal From Height;-1;;2;1942fe2c5f1a1f94881a33d532e4afeb;0;2;20;FLOAT;0;False;110;FLOAT;1;False;2;FLOAT3;40;FLOAT3;0
 Node;AmplifyShaderEditor.ScaleAndOffsetNode;25;347.8192,-11.62255;Inherit;True;3;0;FLOAT4;0,0,0,0;False;1;FLOAT;1;False;2;FLOAT4;0,0,0,0;False;1;FLOAT4;0
-Node;AmplifyShaderEditor.ColorNode;27;608.0806,210.2668;Inherit;False;Property;_ColorEmission;ColorEmission;4;1;[HDR];Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
 Node;AmplifyShaderEditor.ScreenColorNode;28;639.0087,7.487667;Inherit;False;Global;_GrabScreen0;Grab Screen 0;5;0;Create;True;0;0;0;False;0;False;Object;-1;False;False;False;2;0;FLOAT2;0,0;False;1;FLOAT;0;False;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.ColorNode;27;608.0806,210.2668;Inherit;False;Property;_ColorEmission;ColorEmission;4;1;[HDR];Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;33;1149.442,245.1542;Inherit;False;Property;_Smoothness;Smoothness;6;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.SimpleMultiplyOpNode;30;971.0363,-11.55563;Inherit;False;2;2;0;COLOR;0,0,0,0;False;1;COLOR;0,0,0,0;False;1;COLOR;0
 Node;AmplifyShaderEditor.ColorNode;31;840.5312,-208.7487;Inherit;False;Property;_ColorAlbedo;ColorAlbedo;5;1;[HDR];Create;True;0;0;0;False;0;False;0,0,0,0;0,0,0,0;True;0;5;COLOR;0;FLOAT;1;FLOAT;2;FLOAT;3;FLOAT;4
+Node;AmplifyShaderEditor.RangedFloatNode;32;934.6527,157.1509;Inherit;False;Property;_Metallic;Metallic;7;0;Create;True;0;0;0;False;0;False;1;0;0;0;0;1;FLOAT;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;9;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;1a5f04065a8a5db4b9be560854ee3fb7;True;Meta;0;4;Meta;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;2;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;LightMode=Meta;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;10;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;1a5f04065a8a5db4b9be560854ee3fb7;True;Universal2D;0;5;Universal2D;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;5;False;-1;10;False;-1;1;1;False;-1;10;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;True;True;True;True;0;False;-1;False;False;False;False;False;False;False;False;False;True;2;False;-1;True;3;False;-1;True;True;0;False;-1;0;False;-1;True;1;LightMode=Universal2D;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
 Node;AmplifyShaderEditor.TemplateMultiPassMasterNode;11;0,0;Float;False;False;-1;2;UnityEditor.ShaderGraph.PBRMasterGUI;0;1;New Amplify Shader;1a5f04065a8a5db4b9be560854ee3fb7;True;DepthNormals;0;6;DepthNormals;0;False;False;False;False;False;False;False;False;False;False;False;False;True;0;False;-1;False;True;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;3;RenderPipeline=UniversalPipeline;RenderType=Opaque=RenderType;Queue=Geometry=Queue=0;True;0;0;False;True;1;1;False;-1;0;False;-1;0;1;False;-1;0;False;-1;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;False;True;1;False;-1;True;3;False;-1;False;True;1;LightMode=DepthNormals;False;0;Hidden/InternalErrorShader;0;0;Standard;0;False;0
@@ -2659,5 +2677,7 @@ WireConnection;30;0;28;0
 WireConnection;30;1;27;0
 WireConnection;6;0;31;0
 WireConnection;6;2;30;0
+WireConnection;6;3;32;0
+WireConnection;6;4;33;0
 ASEEND*/
-//CHKSM=6D3FA956BC3DBAD8C23BED724050ACA7D6CC2E65
+//CHKSM=0EC1799772B5274463FC5B436C6FAD1485BD07F6
