@@ -123,7 +123,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 2
     - _Cutoff: 0.5
-    - _Darkness: 0
+    - _Darkness: 0.014
     - _Darkness1: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -136,8 +136,7 @@ Material:
     - _GradiantOffset: 0
     - _GradiantOffset1: 0
     - _GradiantScale: 1
-    - _GradiantScale1: 1.05
-    - _Illumination: 1
+    - _GradiantScale1: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
