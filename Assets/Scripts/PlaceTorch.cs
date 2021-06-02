@@ -7,6 +7,7 @@ public class PlaceTorch : MonoBehaviour
     public bool torchOnGround;
     public GameObject torch;
     public GameObject torchOnGroundPos;
+    public GameObject player;
     // Start is called before the first frame update
     void Start()
     {
@@ -16,7 +17,7 @@ public class PlaceTorch : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (Input.GetKeyDown((KeyCode.E)) && torchOnGround == false)
+        if (Input.GetKeyDown((KeyCode.E)) && torchOnGround == false && player.GetComponent<Movement>().isGrounded)
         {
             Debug.Log("place");
             //place la torche au sol
