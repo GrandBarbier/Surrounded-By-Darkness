@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -35,10 +36,14 @@ public class Shattering : MonoBehaviour
 
         if (!shatered)
         {
+            if (gameObject.TryGetComponent(out Rigidbody rigidbody))
+            {
+                rigidbody.useGravity = true;
+            }
+            
             foreach (var child in childs)
             {
-                Rigidbody r = child.GetComponent<Rigidbody>();
-                r.useGravity = true;
+                Rigidbody r = child.AddComponent<Rigidbody>();
                 r.AddForce(new Vector3(0, -500, 0));
 
                 if (Gears.gears?.somkeTrail)
@@ -60,9 +65,11 @@ public class Shattering : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
+        Debug.Log("col");
         //Debug.Log($"Collision : {collision.gameObject.name}");
         if (collision.gameObject.GetComponent<pushableBlock>() || collision.gameObject.GetComponentInChildren<pushableBlock>())
         {
+            Debug.Log("zad");
             Shatter();
         }
     }
