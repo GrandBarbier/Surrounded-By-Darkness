@@ -16,6 +16,7 @@ public class PickUpTorch : MonoBehaviour
             gameObject.transform.parent = player.transform;
             gameObject.transform.position = torchHandPos.transform.position;
             gameObject.transform.rotation = torchHandPos.transform.rotation;
+            gameObject.transform.localEulerAngles += new Vector3(0, -90, 0);
             player.GetComponent<PlaceTorch>().torchOnGround = false;
         }
     }
@@ -29,6 +30,7 @@ public class PickUpTorch : MonoBehaviour
             gameObject.transform.parent = player.transform;
             gameObject.transform.position = torchHandPos.transform.position;
             gameObject.transform.rotation = torchHandPos.transform.rotation;
+            gameObject.transform.localEulerAngles += new Vector3(0, -90, 0);
             player.GetComponent<PlaceTorch>().torchOnGround = false;
         }
     }
