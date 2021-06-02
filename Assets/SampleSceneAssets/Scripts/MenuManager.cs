@@ -143,6 +143,7 @@ public class MenuManager : MonoBehaviour
         }
         else
         {
+            blackPanel.gameObject.SetActive(false);
             GoToPanel(mainMenu);
             Gears.gears.playerInput.SwitchCurrentActionMap("Menu");
             Time.timeScale = 0f;
@@ -256,7 +257,7 @@ public class MenuManager : MonoBehaviour
     {
         button.GetComponent<Image>().color = button.colors.pressedColor;
         
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         
         button.GetComponent<Image>().color = button.colors.normalColor;
     }
@@ -422,7 +423,7 @@ public class MenuManager : MonoBehaviour
             if (!activeChildsOnly || go.transform.GetChild(i).gameObject.activeSelf)
             {
                 allChilds.Add(go.transform.GetChild(i).gameObject);
-
+                
                 if (go.transform.GetChild(i).childCount > 0)
                 {
                     List<GameObject> g = GetAllChilds(go.transform.GetChild(i).gameObject);
