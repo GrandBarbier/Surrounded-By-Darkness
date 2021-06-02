@@ -44,6 +44,7 @@ public class LevelManager
    {
       preLoadingScene?.Invoke();
       preLoadingScene = null;
+      Time.timeScale = 1f;
       SceneManager.LoadScene(index);
       Gears.gears.StartCoroutine(FadeDuration(Gears.gears.menuManager.blackPanel, start: new Color(r: 0f, g: 0f, b: 0f, a: 1f), end: new Color(r: 0f, g: 0f, b: 0f, a: 0f), duration: 2f));
    }
