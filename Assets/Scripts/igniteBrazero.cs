@@ -5,18 +5,31 @@ using UnityEngine;
 
 public class igniteBrazero : MonoBehaviour
 {
-	public GameObject light;
-	public GameObject particles;
+	public GameObject brazero_light;
+	public GameObject brazero_particles;
+	public GameObject torch_light;
+	public GameObject torch_particles;
 	private void OnTriggerStay(Collider other)
 	{
 		if (Input.GetKeyDown(KeyCode.W))
 		{
-		//if torche allumé
-			if (!light.activeSelf)
+			if (torch_light.activeSelf)
 			{
-				//lancer animation
-				light.SetActive(true);
-				particles.SetActive(true);
+				if (!brazero_light.activeSelf)
+				{
+					//lancer animation
+					brazero_light.SetActive(true);
+					brazero_particles.SetActive(true);
+				}
+			}
+			else
+			{
+				if (brazero_light.activeSelf)
+				{
+					//lancer animation
+					torch_light.SetActive(true);
+					torch_particles.SetActive(true);
+				}
 			}
 		}
 		//else allumer torche

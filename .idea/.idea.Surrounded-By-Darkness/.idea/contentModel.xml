@@ -822,7 +822,6 @@
             <e p="SimpleFileBrowser.Runtime.asmdef" t="Include" />
           </e>
         </e>
-        <e p="pushableBlock.cs" t="Include" />
         <e p="Samples" t="Include">
           <e p="Input System" t="Include">
             <e p="1.0.2" t="Include">
@@ -863,6 +862,7 @@
           <e p="Movement.cs" t="Include" />
           <e p="PickUpTorch.cs" t="Include" />
           <e p="PlaceTorch.cs" t="Include" />
+          <e p="pushableBlock.cs" t="Include" />
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
