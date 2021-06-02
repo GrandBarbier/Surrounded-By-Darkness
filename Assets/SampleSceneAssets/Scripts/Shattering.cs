@@ -36,11 +36,6 @@ public class Shattering : MonoBehaviour
 
         if (!shatered)
         {
-            if (gameObject.TryGetComponent(out Rigidbody rigidbody))
-            {
-                rigidbody.useGravity = true;
-            }
-            
             foreach (var child in childs)
             {
                 Rigidbody r = child.AddComponent<Rigidbody>();
@@ -65,11 +60,9 @@ public class Shattering : MonoBehaviour
 
     void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("col");
         //Debug.Log($"Collision : {collision.gameObject.name}");
         if (collision.gameObject.GetComponent<pushableBlock>() || collision.gameObject.GetComponentInChildren<pushableBlock>())
         {
-            Debug.Log("zad");
             Shatter();
         }
     }
