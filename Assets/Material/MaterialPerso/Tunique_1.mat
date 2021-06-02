@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Tunique_1
-  m_Shader: {fileID: 4800000, guid: 8f1af44905dbb4d4fa26818bf1c1807f, type: 3}
+  m_Shader: {fileID: 4800000, guid: a784a87065318bb429c42e92c84f04e9, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,6 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
         m_Texture: {fileID: 2800000, guid: 0b420dbcd1addb94da9a4484288fda1e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Alpha:
+        m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -108,6 +112,7 @@ Material:
     m_Floats:
     - _AlphaClip: 0
     - _AlphaCutoff: 0.5
+    - _Alphathreshold: 1
     - _Blend: 0
     - _BumpScale: 1
     - _ClearCoatMask: 0
