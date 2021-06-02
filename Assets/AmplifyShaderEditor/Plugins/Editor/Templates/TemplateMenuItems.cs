@@ -54,22 +54,22 @@ namespace AmplifyShaderEditor
 		[MenuItem( "Assets/Create/Amplify Shader/Universal/Experimental/2D Lit", false, 85 )]
 		public static void ApplyTemplateUniversalExperimental2DLit()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "efe5b4ec47b64d249ac4ebac9827edb1" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "6415bbf5493ac224daea4c55938d0c02" );
 		}
 		[MenuItem( "Assets/Create/Amplify Shader/Universal/Experimental/2D Unlit", false, 85 )]
 		public static void ApplyTemplateUniversalExperimental2DUnlit()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "268a8c11232b80b4397b61cdf9668b53" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "32d49ca3a0f95394ead09107e237b724" );
 		}
 		[MenuItem( "Assets/Create/Amplify Shader/Universal/PBR", false, 85 )]
 		public static void ApplyTemplateUniversalPBR()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "e3316f0576cb6164e85daf8fed49ed08" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "e89f299390837804087b1542bfab0ba5" );
 		}
 		[MenuItem( "Assets/Create/Amplify Shader/Universal/Unlit", false, 85 )]
 		public static void ApplyTemplateUniversalUnlit()
 		{
-			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "fe47caee303c8c2438e6b49c4f2c6d99" );
+			AmplifyShaderEditorWindow.CreateConfirmationTemplateShader( "1358129402fd3dd439a0c18a97fcf527" );
 		}
 	}
 }
