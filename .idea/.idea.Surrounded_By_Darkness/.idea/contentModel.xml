@@ -864,6 +864,7 @@
           <e p="SimpleCameraController.cs" t="Include" />
         </e>
         <e p="Shaders" t="Include">
+          <e p="Cape.shader" t="Include" />
           <e p="CustomHLSL" t="Include">
             <e p="CustomLighting.hlsl" t="Include" />
             <e p="CustomShadow.hlsl" t="Include" />
@@ -872,7 +873,8 @@
           <e p="ScriptableRenderFeatures" t="Include">
             <e p="DepthNormalsFeature.cs" t="Include" />
           </e>
-          <e p="Toon.shader" t="Include" />
+          <e p="ToonNoShadow.shader" t="Include" />
+          <e p="ToonShadow.shader" t="Include" />
         </e>
         <e p="TextMesh Pro" t="Include">
           <e p="Fonts" t="Include">

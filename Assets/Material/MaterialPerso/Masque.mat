@@ -8,7 +8,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: Masque
-  m_Shader: {fileID: 4800000, guid: 21ae2580bf2d22f419eb2665ea49ac5b, type: 3}
+  m_Shader: {fileID: 4800000, guid: 8f1af44905dbb4d4fa26818bf1c1807f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -19,6 +19,10 @@ Material:
   m_SavedProperties:
     serializedVersion: 3
     m_TexEnvs:
+    - _Albedo:
+        m_Texture: {fileID: 2800000, guid: 5748ef7097590de469d41a60bf89249d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _Albedo1:
         m_Texture: {fileID: 2800000, guid: 5748ef7097590de469d41a60bf89249d, type: 3}
         m_Scale: {x: 1, y: 1}
@@ -67,6 +71,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -93,6 +101,7 @@ Material:
     - _ClearCoatSmoothness: 0
     - _Cull: 0
     - _Cutoff: 0.5
+    - _Darkness: 0
     - _Darkness1: 0
     - _DetailAlbedoMapScale: 1
     - _DetailNormalMapScale: 1
@@ -101,8 +110,12 @@ Material:
     - _GlossMapScale: 1
     - _Glossiness: 0
     - _GlossyReflections: 1
-    - _GradiantOffset1: 0
-    - _GradiantScale1: 1
+    - _GradiantOffset: 0
+    - _GradiantOffset1: -0.145
+    - _GradiantScale: 1
+    - _GradiantScale1: 0.066
+    - _Illumination: 0.312
+    - _LightColor: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -122,6 +135,7 @@ Material:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
+    - _Tint: {r: 1, g: 1, b: 1, a: 0}
     - _Tint1: {r: 0.7529412, g: 0.6784314, b: 0.627451, a: 1}
   m_BuildTextureStacks: []
 --- !u!114 &3031204608424901489

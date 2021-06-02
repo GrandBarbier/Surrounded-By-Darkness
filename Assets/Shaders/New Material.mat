@@ -21,7 +21,7 @@ Material:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_Name: New Material
-  m_Shader: {fileID: 4800000, guid: 29c98551e9e0a1f44a6ca580744c2b55, type: 3}
+  m_Shader: {fileID: 4800000, guid: 4eb5805ca36cdb84e95765f15971e86f, type: 3}
   m_ShaderKeywords: 
   m_LightmapFlags: 4
   m_EnableInstancingVariants: 0
@@ -38,6 +38,10 @@ Material:
         m_Offset: {x: 0, y: 0}
     - _Albedo1:
         m_Texture: {fileID: 0}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _Alpha:
+        m_Texture: {fileID: 2800000, guid: 3746796813c9fd547838cad69cb167d4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseMap:
@@ -88,6 +92,10 @@ Material:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _TextureSample0:
+        m_Texture: {fileID: 2800000, guid: 3746796813c9fd547838cad69cb167d4, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     - _texcoord:
         m_Texture: {fileID: 0}
         m_Scale: {x: 1, y: 1}
@@ -121,6 +129,7 @@ Material:
     - _DetailNormalMapScale: 1
     - _DstBlend: 0
     - _EnvironmentReflections: 1
+    - _Float0: 1
     - _GlossMapScale: 0
     - _Glossiness: 0
     - _GlossyReflections: 0
@@ -128,6 +137,7 @@ Material:
     - _GradiantOffset1: 0
     - _GradiantScale: 1
     - _GradiantScale1: 1.05
+    - _Illumination: 1
     - _Metallic: 0
     - _Mode: 0
     - _OcclusionStrength: 1
@@ -155,7 +165,8 @@ Material:
     m_Colors:
     - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
-    - _EmissionColor: {r: 0, g: 0, b: 0, a: 1}
+    - _Color0: {r: 0, g: 1.8039216, b: 2, a: 0}
+    - _EmissionColor: {r: 0, g: 1.8039216, b: 2, a: 0}
     - _SpecColor: {r: 0.19999996, g: 0.19999996, b: 0.19999996, a: 1}
     - _SpecularColor: {r: 0, g: 0.6742267, b: 1, a: 0}
     - _Tint: {r: 1, g: 1, b: 1, a: 0}
