@@ -37,16 +37,21 @@ public class Shattering : MonoBehaviour
         {
             foreach (var child in childs)
             {
-                Rigidbody r = child.AddComponent<Rigidbody>();
+                Rigidbody r = child.GetComponent<Rigidbody>();
+                r.useGravity = true;
                 r.AddForce(new Vector3(0, -500, 0));
-                GameObject g = Instantiate(Gears.gears.somkeTrail, child.transform.position, child.transform.rotation);
-                g.transform.SetParent(child.transform);
+
+                if (Gears.gears?.somkeTrail)
+                {
+                    GameObject g = Instantiate(Gears.gears.somkeTrail, child.transform.position, child.transform.rotation);
+                    g.transform.SetParent(child.transform);
                 
-                ParticleSystem particleSystem = g.GetComponent<ParticleSystem>();
-                var v = particleSystem.shape;
-                v.enabled = true;
-                v.shapeType = ParticleSystemShapeType.Mesh;
-                v.mesh = child.GetComponent<MeshFilter>().mesh;
+                    ParticleSystem particleSystem = g.GetComponent<ParticleSystem>();
+                    var v = particleSystem.shape;
+                    v.enabled = true;
+                    v.shapeType = ParticleSystemShapeType.Mesh;
+                    v.mesh = child.GetComponent<MeshFilter>().mesh;
+                }
             }
             
             shatered = true;
@@ -56,7 +61,7 @@ public class Shattering : MonoBehaviour
     void OnCollisionEnter(Collision collision)
     {
         //Debug.Log($"Collision : {collision.gameObject.name}");
-        if (collision.gameObject.GetComponent<pushableBlock>())
+        if (collision.gameObject.GetComponent<pushableBlock>() || collision.gameObject.GetComponentInChildren<pushableBlock>())
         {
             Shatter();
         }
