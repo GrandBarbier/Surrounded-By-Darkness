@@ -69,15 +69,18 @@ public class SelectionUI : MonoBehaviour
         {
             button.onClick?.Invoke();
         }
-        
-        StartCoroutine(SelectionColor());
+
+        if (gameObject.activeInHierarchy)
+        {
+            StartCoroutine(SelectionColor());
+        }
     }
 
     public IEnumerator SelectionColor()
     {
         _image.color = pressedColor;
         
-        yield return new WaitForSeconds(0.1f);
+        yield return new WaitForSecondsRealtime(0.1f);
         
         //Debug.Log("set color to idle");
         _image.color = idleColor;
